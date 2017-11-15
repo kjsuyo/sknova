@@ -1,0 +1,22 @@
+<!-- views/index.ejs -->
+<html>
+
+
+<body>
+
+<br><br><br>
+  <img src="img/skillterrier_placeholder.jpg" alt="dog friend">
+
+  <br>Hello<br><br><br>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<ul>
+  <% jobs.forEach(function(Job) { %>
+    <li>
+      <%= Job.industry %>, <%= Job.jobtitle %>
+    </li>
+  <% }) %>
+</ul>
+</body>
+</html>

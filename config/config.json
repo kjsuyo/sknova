@@ -1,10 +1,14 @@
 {
   "development": {
-    "dialect": "sqlite",
-    "storage": "./db.development.sqlite"
+    "username": "postgres",
+    "password": "Autumn2011!",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "storage": "./db.development.postgres"
   },
   "test": {
-    "dialect": "sqlite",
+    "dialect": "postgres",
     "storage": ":memory:"
   },
   "production": {
@@ -12,6 +16,6 @@
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }

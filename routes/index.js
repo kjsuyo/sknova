@@ -2,15 +2,18 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 
+
 router.get('/', function(req, res) {
-  models.User.findAll({
-    include: [ models.Task ]
-  }).then(function(users) {
+  models.Job.findAll().then(function(jobs) {
     res.render('index', {
-      title: 'Sequelize: Express Example',
-      users: users
+      title: 'Skillterrer',
+      jobs: jobs
     });
   });
 });
+
+
+
+
 
 module.exports = router;
