@@ -1,15 +1,10 @@
 body {
-  padding: 0px;
-  font: 14px "Helvetica Neue","Open Sans",sans-serif;
-}
-
-main {
   padding: 50px;
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
 a {
-  color: #FFFFFF;
+  color: #00B7FF;
 }
 
 h1, h2 {
@@ -28,20 +23,10 @@ nav {
   color: #34B3EE;
   padding-left: 20px;
 }
-head {
-  background-color: #6C6C6C;
-  color: #34B3EE;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 
 footer {
   background-color: #6C6C6C;
   color: #FFFFFF;
   text-align: center;
   padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }

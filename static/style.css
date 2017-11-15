@@ -1,0 +1,31 @@
+nav {
+  background-color: #6C6C6C;
+  color: #34B3EE;
+  padding-left: 20px;
+}
+
+footer {
+  background-color: #6C6C6C;
+  color: #FFFFFF;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.card {
+  width: 350px;
+  height: 350px;
+  margin: 20px;
+}
+
+.card-flex {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+.card-image {
+  height: 60%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
