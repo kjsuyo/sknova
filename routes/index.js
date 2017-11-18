@@ -12,6 +12,14 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/industry', function(req, res) {
+  models.Job.findAll().then(function(jobs) {
+    res.render('industry', {
+      title: 'Skillterrier',
+      jobs: jobs
+    });
+  });
+});
 
 
 
