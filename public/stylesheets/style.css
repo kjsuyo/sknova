@@ -8,7 +8,8 @@ main {
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
-a {
+
+a.footer {
   color: #FFFFFF;
 }
 

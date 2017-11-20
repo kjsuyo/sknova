@@ -12,17 +12,10 @@
 <p>Welcome to <%= title %></p><br><br>
 
 <a><form action="industry/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Go
+  <button class="btn waves-effect waves-light" type="submit">Search here my dog
     <i class="material-icons right">send</i>
   </button>
 </form></a>
 
-<ul>
-  <% jobs.forEach(function(Job) { %>
-    <li>
-      <%= Job.industry %>, <%= Job.jobtitle %>
-    </li>
-  <% }) %>
-</ul>
 </body>
 </html>

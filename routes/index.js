@@ -1,28 +1,26 @@
-var models  = require('../models');
+var models  = require('../models/index');
 var express = require('express');
 var router  = express.Router();
-var jobs_controller = require('../controllers/jobController');
+
+//router.get('/controllers', jobs_controller.index);
+
+const jobsController = require('../controllers').jobs;
 
 
-router.get('/', function(req, res) {
-  models.Job.findAll().then(function(jobs) {
-    res.render('index', {
-      title: 'Skillterrer',
-      jobs: jobs
+
+module.exports = (app) => {
+
+  app.get('/', jobsController.index);
+
+  app.get('/industry', function(req, res) {
+    models.Job.findAll().then(function(jobs) {
+      res.render('industry', {
+        title: 'Skillterrier',
+        jobs: jobs
+      });
     });
   });
-});
 
-router.get('/industry', function(req, res) {
-  models.Job.findAll().then(function(jobs) {
-    res.render('industry', {
-      title: 'Skillterrier',
-      jobs: jobs
-    });
-  });
-});
-
-
-
-
-module.exports = router;
+  app.get('/jobs', jobsController.list);
+  app.get('/jobs/:id', jobsController.retrieve);
+};

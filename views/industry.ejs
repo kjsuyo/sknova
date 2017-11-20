@@ -10,7 +10,7 @@
 <p>Welcome to <%= title %></p>
 
 <a><form action="/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Submit
+  <button class="btn waves-effect waves-light" type="submit">Go back
     <i class="material-icons right">send</i>
   </button>
 </form></a>
@@ -18,7 +18,7 @@
 <ul>
   <% jobs.forEach(function(Job) { %>
     <li>
-      <%= Job.industry %>, <%= Job.jobtitle %>
+      <a href="<%= '/jobs/'+Job.id %>"><%= Job.jobtitle %>, <%= Job.industry %></a><br>
     </li>
   <% }) %>
 </ul>
