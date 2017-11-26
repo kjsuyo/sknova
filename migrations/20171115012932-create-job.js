@@ -20,8 +20,22 @@ module.exports = {
       segment: {
         type: Sequelize.STRING
       },
+      category: {
+        type: Sequelize.STRING
+      },
       jobtitle: {
         type: Sequelize.STRING
+      },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id',
+          as: 'categoryId',
+        },
+      },
+      description: {
+        type: Sequelize.STRING(1234)
       },
       empl_2016: {
         type: Sequelize.FLOAT
@@ -44,18 +58,21 @@ module.exports = {
       median_wage_2016: {
         type: Sequelize.FLOAT
       },
+      education: {
+        type: Sequelize.STRING
+      },
       work_exp: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       otj_training: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

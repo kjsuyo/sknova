@@ -14,7 +14,7 @@ module.exports = {
 
   list(req, res) {
     models.Job.findAll().then(function(jobs) {
-      res.render('industry', {
+      res.render('joblisting', {
         title: 'Job Listing',
         jobs: jobs
       });
@@ -26,21 +26,12 @@ module.exports = {
     models.Job.findAll({
       where: {industry: industry}
     }).then(function(jobs) {
-      res.render('industry', {
+      res.render('joblisting', {
         title: 'Job Listing',
         jobs: jobs
       });
     });
   },
-
-
-/*  list(req, res) {
-    return Job
-      .all()
-      .then(jobs => res.status(200).send(jobs))
-      .catch(error => res.status(400).send(error));
-  },
-  */
 
   retrieve(req, res) {
     return Job
@@ -54,7 +45,8 @@ module.exports = {
         return res.status(200).render('jobdetail', {
           title: 'Job Detail Page',
           jobtitle: job.jobtitle,
-          industry: job.industry
+          industry: job.industry,
+          description: job.description
         });
       })
       .catch(error => res.status(400).send(error));

@@ -3,6 +3,8 @@ var express = require('express');
 var router  = express.Router();
 
 const jobsController = require('../controllers').jobs;
+const catController = require('../controllers').categories;
+const indController = require('../controllers').industries;
 
 
 
@@ -10,18 +12,13 @@ module.exports = (app) => {
 
   app.get('/', jobsController.index);
 
-  app.get('/jobs', jobsController.list);
-  app.get('/jobs/:id', jobsController.retrieve);
+  app.get('/ind', indController.list);
+  app.get('/ind/:industryId', indController.retrieve);
 
-  app.get('/sublist', jobsController.sublist);
+  app.get('/ind/:industryId/cat', catController.list);
+  app.get('/ind/:industryId/cat/:categoryId', catController.retrieve);
 
-  /*app.get('/industry', function(req, res) {
-    models.Job.findAll().then(function(jobs) {
-      res.render('industry', {
-        title: 'Job listing page',
-        jobs: jobs
-      });
-    });
-  });
-  */
+  app.get('/ind/:industryId/cat/:categoryId/job', jobsController.list);
+  app.get('/ind/:industryId/cat/:categoryId/job/:id', jobsController.retrieve);
+
 };

@@ -15,8 +15,15 @@
 
 <ul>
     <li>
-      <a><%= jobtitle %>: <br><br> <%= description %></a><br>
+      <a><%= name %> jobs:</a><br>
     </li>
+</ul>
+<ul>
+  <% jobs.forEach(function(Job) { %>
+    <li>
+      <a href="./<%= id %>/job/<%= Job.id %>"><%= Job.jobtitle %>: <%= Job.description %></a><br><br>
+    </li>
+  <% }) %>
 </ul>
 </body>
 </html>

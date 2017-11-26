@@ -14,9 +14,9 @@
 </form></a>
 
 <ul>
-  <% industries.forEach(function(Industry) { %>
+  <% categories.forEach(function(Category) { %>
     <li>
-      <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %>, <%= Industry.description %></a><br>
+      <a href="<%= .'/cat/'+Category.id %>"><%= Category.name %>, <%= Category.description %></a><br>
     </li>
   <% }) %>
 </ul>

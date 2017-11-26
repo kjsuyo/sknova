@@ -14,9 +14,9 @@
 </form></a>
 
 <ul>
-  <% industries.forEach(function(Industry) { %>
+  <% jobs.forEach(function(Job) { %>
     <li>
-      <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %>, <%= Industry.description %></a><br>
+      <a href="<%= '/jobs/'+Job.id %>"><%= Job.jobtitle %>, <%= Job.industry %></a><br>
     </li>
   <% }) %>
 </ul>

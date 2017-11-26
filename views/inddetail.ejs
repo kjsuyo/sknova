@@ -15,8 +15,15 @@
 
 <ul>
     <li>
-      <a><%= jobtitle %>: <br><br> <%= description %></a><br>
+      <a><%= name %> categories:</a><br>
     </li>
+</ul>
+<ul>
+  <% categories.forEach(function(Category) { %>
+    <li>
+      <a href="./<%= id %>/cat/<%= Category.id %>"><%= Category.name %>.</a><br>
+    </li>
+  <% }) %>
 </ul>
 </body>
 </html>

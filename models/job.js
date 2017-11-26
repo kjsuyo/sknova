@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     industry: DataTypes.STRING,
     sector: DataTypes.STRING,
     segment: DataTypes.STRING,
+    category: DataTypes.STRING,
     jobtitle: DataTypes.STRING,
+    description: DataTypes.STRING(1234),
     empl_2016: DataTypes.FLOAT,
     empl_2026: DataTypes.FLOAT,
     empl_change_num: DataTypes.FLOAT,
@@ -13,14 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     self_empl_2016: DataTypes.FLOAT,
     avg_annual_openings: DataTypes.FLOAT,
     median_wage_2016: DataTypes.FLOAT,
-    work_exp: DataTypes.FLOAT,
-    otj_training: DataTypes.FLOAT
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+    education: DataTypes.STRING,
+    work_exp: DataTypes.STRING,
+    otj_training: DataTypes.STRING
+});
+  Job.associate = (models) => {
+    Job.belongsTo(models.Category, {
+      foreignKey: 'categoryId',
+    });
+};
   return Job;
 };
