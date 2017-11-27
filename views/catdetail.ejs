@@ -1,17 +1,10 @@
-<!-- views/index.ejs -->
+<!-- views/catdetail.ejs -->
 <html>
-<body>
+<body class="center">
 
 <br><br><br>
 
-<h1><%= title %></h1>
-<p>Welcome to the <%= title %></p>
-
-<a><form action="/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Start over
-    <i class="material-icons right">send</i>
-  </button>
-</form></a>
+<h1>Find an Occupation.</h1>
 
 <ul>
     <li>
@@ -21,9 +14,12 @@
 <ul>
   <% jobs.forEach(function(Job) { %>
     <li>
-      <a href="./<%= id %>/job/<%= Job.id %>"><%= Job.jobtitle %>: <%= Job.description %></a><br><br>
+      - <a href="./<%= id %>/job/<%= Job.id %>"><%= Job.jobtitle %>: <br><%= Job.description %></a><br><br>
     </li>
   <% }) %>
 </ul>
+<br><br><p>Learn what you need to get ahead.</p>
+
+<br><br>Or, <a href="/">start over.</a>
 </body>
 </html>

@@ -10,7 +10,10 @@ const indController = require('../controllers').industries;
 
 module.exports = (app) => {
 
-  app.get('/', jobsController.index);
+//  app.get('/', jobsController.index);
+  app.get('/', (req, res) => res.render('index', {title: 'Homepage'}));
+  app.get('/about', (req, res) => res.render('about'));
+  app.get('/contact', (req, res) => res.render('contact'));
 
   app.get('/ind', indController.list);
   app.get('/ind/:industryId', indController.retrieve);

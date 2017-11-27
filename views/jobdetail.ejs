@@ -1,22 +1,20 @@
-<!-- views/index.ejs -->
+<!-- views/jobdetail.ejs -->
 <html>
 <body>
 
-<br><br><br>
+<br><br>
 
-<h1><%= title %></h1>
-<p>Welcome to the <%= title %></p>
-
-<a><form action="/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Start over
-    <i class="material-icons right">send</i>
-  </button>
-</form></a>
-
+<h1><%= jobtitle %></h1>
+<p>Description:<br><%= description %></p>
+<br><p><%= jobtitle %> may be responsible for the following tasks:
 <ul>
+  <% tasks.forEach(function(Task) { %>
     <li>
-      <a><%= jobtitle %>: <br><br> <%= description %></a><br>
+      - <a><%= Task.name %></a><br>
     </li>
+  <% }) %>
 </ul>
+
+<br><br><a href="/">Do it again.</a>
 </body>
 </html>

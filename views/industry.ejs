@@ -1,24 +1,20 @@
 <!-- views/index.ejs -->
 <html>
-<body>
+<body class="center">
 
 <br><br><br>
 
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-
-<a><form action="/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Go back
-    <i class="material-icons right">send</i>
-  </button>
-</form></a>
+<h1>Find an Industry</h1>
 
 <ul>
   <% industries.forEach(function(Industry) { %>
     <li>
-      <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %>, <%= Industry.description %></a><br>
+      - <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %></a><br>
     </li>
   <% }) %>
 </ul>
+<br><p>Choose one of the high-growth, high-pay industries above to continue your search.</p>
+
+<br><br>Or, <a href="/">start over.</a>
 </body>
 </html>

@@ -3,6 +3,12 @@ body {
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
+body.center {
+  padding: 0px;
+  align-items: center;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+}
+
 main {
   padding: 50px;
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
@@ -11,6 +17,14 @@ main {
 
 a.footer {
   color: #FFFFFF;
+}
+
+h1.center {
+  text-align: center;
+}
+
+p.center {
+  text-align: center;
 }
 
 h1, h2 {
@@ -27,6 +41,7 @@ input[type=submit], input[type=text] {
 nav {
   background-color: #6C6C6C;
   color: #34B3EE;
+  text-align: left;
   padding-left: 20px;
   padding-bottom: 20px;
 }

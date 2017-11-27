@@ -3,6 +3,7 @@ var express = require('express');
 var router  = express.Router();
 
 const Job = require('../models').Job;
+const Task = require('../models').Task;
 
 module.exports = {
 
@@ -35,7 +36,12 @@ module.exports = {
 
   retrieve(req, res) {
     return Job
-      .findById(req.params.id)
+      .findById(req.params.id, {
+        include: [{
+          model: Task,
+          as: 'tasks',
+        }],
+      })
       .then(job => {
         if (!job) {
           return res.status(404).send({
@@ -46,7 +52,8 @@ module.exports = {
           title: 'Job Detail Page',
           jobtitle: job.jobtitle,
           industry: job.industry,
-          description: job.description
+          description: job.description,
+          tasks: job.tasks
         });
       })
       .catch(error => res.status(400).send(error));

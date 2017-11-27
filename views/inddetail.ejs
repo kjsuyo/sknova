@@ -1,29 +1,21 @@
-<!-- views/index.ejs -->
+<!-- views/inddetail.ejs -->
 <html>
-<body>
+<body class="center">
 
 <br><br><br>
 
-<h1><%= title %></h1>
-<p>Welcome to the <%= title %></p>
+<h1>Find a Sector</h1>
+<p><%= name %> sectors:</p>
 
-<a><form action="/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Start over
-    <i class="material-icons right">send</i>
-  </button>
-</form></a>
-
-<ul>
-    <li>
-      <a><%= name %> categories:</a><br>
-    </li>
-</ul>
 <ul>
   <% categories.forEach(function(Category) { %>
     <li>
-      <a href="./<%= id %>/cat/<%= Category.id %>"><%= Category.name %>.</a><br>
+      - <a href="./<%= id %>/cat/<%= Category.id %>"><%= Category.name %>.</a><br>
     </li>
   <% }) %>
 </ul>
+<br><br><p>See where new paths can take you.</p>
+
+<br><br>Or, <a href="/">start over.</a>
 </body>
 </html>

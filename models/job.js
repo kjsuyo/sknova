@@ -24,5 +24,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'categoryId',
     });
 };
+Job.associate = (models) => {
+  Job.hasMany(models.Task, {
+    foreignKey: 'jobId',
+    as: 'tasks',
+  });
+};
   return Job;
 };
