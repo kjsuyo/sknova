@@ -8,9 +8,14 @@ body {
 }
 
 img {
-  display: block;
   width: 100%;
   height: auto;
+}
+
+img.logo {
+  padding-top: 10px;
+  width: auto;
+  height:50px;
 }
 
 body.center {
@@ -52,7 +57,7 @@ input[type=submit], input[type=text] {
   margin-left: 10px
 }
 nav {
-  background-color: #6C6C6C;
+  background-color: #FFFFFF;
   color: #34B3EE;
   text-align: left;
   padding-left: 20px;
