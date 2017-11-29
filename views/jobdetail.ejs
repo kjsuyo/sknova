@@ -4,18 +4,21 @@
   <div class="parent">
   <img width="400" height="400" src="/img/mainstreet.jpg">
 </div>
-
+<div class="padded">
 <h1><%= jobtitle %></h1>
-<p>Description:<br><%= description %></p>
-<br><p><%= jobtitle %> may be responsible for the following tasks:
+<p>Description:<br><%= description %></p><br>
+Median salary: <%= numeral(median_wage_2016).format('$0,0') %><br>
+Long-term job growth outlook: <%= empl_change_pct %>%
+<br><br><p><%= jobtitle %> may be responsible for the following tasks:
 <ul>
   <% tasks.forEach(function(Task) { %>
-    <li>
-      - <a><%= Task.name %></a><br>
+    <li>- <%= Task.name %>
     </li>
   <% }) %>
 </ul>
-
-<br><br><a href="/">Do it again.</a>
+</div>
+<div class="padded">
+<a href="/">Do it again.</a>
+</div>
 </body>
 </html>

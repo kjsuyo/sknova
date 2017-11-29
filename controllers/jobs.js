@@ -1,6 +1,7 @@
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
+var numeral = require('numeral');
 
 const Job = require('../models').Job;
 const Task = require('../models').Task;
@@ -17,19 +18,8 @@ module.exports = {
     models.Job.findAll().then(function(jobs) {
       res.render('joblisting', {
         title: 'Job Listing',
-        jobs: jobs
-      });
-    });
-  },
-
-  sublist(req, res) {
-    let industry = 'technology';
-    models.Job.findAll({
-      where: {industry: industry}
-    }).then(function(jobs) {
-      res.render('joblisting', {
-        title: 'Job Listing',
-        jobs: jobs
+        jobs: jobs,
+        numeral: numeral
       });
     });
   },
@@ -53,7 +43,10 @@ module.exports = {
           jobtitle: job.jobtitle,
           industry: job.industry,
           description: job.description,
-          tasks: job.tasks
+          tasks: job.tasks,
+          median_wage_2016: job.median_wage_2016,
+          empl_change_pct: job.empl_change_pct,
+          numeral: numeral
         });
       })
       .catch(error => res.status(400).send(error));

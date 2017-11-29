@@ -1,6 +1,7 @@
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
+var numeral = require('numeral');
 
 const Industry = require('../models').Industry;
 const Category = require('../models').Category;
@@ -36,7 +37,8 @@ module.exports = {
           name: category.name,
           id: category.id,
           description: category.description,
-          jobs: category.jobs
+          jobs: category.jobs,
+          numeral: numeral
         });
       })
       .catch(error => res.status(400).send(error));

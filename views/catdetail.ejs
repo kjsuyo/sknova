@@ -11,13 +11,19 @@
       <a><%= name %> jobs:</a><br>
     </li>
 </ul>
+<div class="padded">
 <ul>
   <% jobs.forEach(function(Job) { %>
     <li>
-      - <a href="./<%= id %>/job/<%= Job.id %>"><%= Job.jobtitle %>: <br><%= Job.description %></a><br><br>
+      <a href="./<%= id %>/job/<%= Job.id %>"><%= Job.jobtitle %>:
+        </a>
+        <span><br>Median salary: <%= numeral(Job.median_wage_2016).format('$0,0') %>
+        <br>Long-term job growth outlook: <%= Job.empl_change_pct %>%
+        <br><br>Description: <%= Job.description %></span><br><br>
     </li>
   <% }) %>
 </ul>
+</div>
 <br><br><p>Learn what you need to get ahead.</p>
 
 <br><br>Or, <a href="/">start over.</a>

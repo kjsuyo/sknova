@@ -3,6 +3,14 @@ body {
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
+.padded {
+  padding-left: 50px;
+  padding-right: 50px;
+  position: relative;
+  float: none;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+}
+
 .parent {
   width: 100%;
 }
@@ -12,13 +20,20 @@ img {
   height: auto;
 }
 
+img.normal {
+  width: auto;
+  height: auto;
+}
+
 img.logo {
   padding-top: 10px;
   width: auto;
   height:50px;
 }
 
-body.center {
+body
+
+.center {
   padding: 0px;
   align-items: center;
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
@@ -37,6 +52,13 @@ a.footer {
   color: #FFFFFF;
 }
 
+a
+
+.left {
+  color: #000000;
+  text-align: left;
+}
+
 h1.center {
   text-align: center;
 }
@@ -51,6 +73,12 @@ h1, h2 {
 
 h1 {
   font-size: 35px;
+}
+
+ul.list{
+    margin-left: 20px;
+    display: list-item;
+    list-style-type:disc;
 }
 
 input[type=submit], input[type=text] {
@@ -72,3 +100,49 @@ footer {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+
+/* industry box display */
+        .industry_boxes {
+          display: block;
+          margin: auto;
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-bottom: 10px;
+          height: auto;
+          width: auto;
+          position: relative;
+          float: left;
+        }
+
+        .industry_boxes ul {
+          list-style: none;
+        }
+
+        .industry_boxes ul li {
+            display: inline;
+            list-style: none;
+            float: left;
+            padding: 0 20px 0 0;
+            text-align:center;
+        }
+
+
+        .industry_boxes ul li a {
+
+          display: block;
+          /*
+          margin-right: 10px;
+          margin-bottom: 7px; */
+          opacity: 0.75;
+          -webkit-transition: all 0.3s linear;
+          -moz-transition: all 0.3s linear;
+          transition: all 0.3s linear;
+        }
+        .industry_boxes ul li a:hover {
+          opacity: 1.0;
+        }
+
+        .industry_boxes ul li a img {
+          border: 1px solid #e1d9ec;
+        }

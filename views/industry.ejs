@@ -3,18 +3,23 @@
 <body class="center">
   <div class="parent">
   <img width="400" height="400" src="/img/mainstreet.jpg">
-</div>
 <h1>Find an Industry</h1>
+</div>
 
-<ul>
+<div class="industry_boxes">
+<ul class="industry_boxes">
   <% industries.forEach(function(Industry) { %>
-    <li>
-      - <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %></a><br>
+    <li class="industry_boxes">
+      <a href="<%= '/ind/'+Industry.id %>"><img src="/img/placeholder_2.jpg" width="50" height="0"> </a>
+      <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %></a><br>
     </li>
   <% }) %>
 </ul>
-<br><p>Choose one of the high-growth, high-pay industries above to continue your search.</p>
+</div>
+
+<p>Choose one of the high-growth, high-pay industries above to continue your search.</p>
 
 <br><br>Or, <a href="/">start over.</a>
+</div>
 </body>
 </html>
