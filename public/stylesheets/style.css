@@ -113,7 +113,7 @@ footer {
           padding-bottom: 10px;
           width: auto;
           height: auto;
-          max-width: 500px;
+          max-width: 450px;
           position: relative;
         }
 
@@ -149,7 +149,7 @@ footer {
 
         .industry_boxes ul li a img {
           border: 1px solid #e1d9ec;
-          width: 98px;
-          height: 98px;
+          width: 84px;
+          height: 84px;
           padding: 2px;
         }
