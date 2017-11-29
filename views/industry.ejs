@@ -5,12 +5,12 @@
   <img width="400" height="400" src="/img/mainstreet.jpg">
 <h1>Find an Industry</h1>
 </div>
-
+<div class="padded">
 <div class="industry_boxes">
-<ul class="industry_boxes">
+<ul>
   <% industries.forEach(function(Industry) { %>
     <li>
-      <a href="<%= '/ind/'+Industry.id %>"><img src="/img/placeholder_2.jpg" width="50" height="0"> </a>
+      <a href="<%= '/ind/'+Industry.id %>"><img src="/img/industry/<%= Industry.name %>.jpg" width="100" height="100"> </a>
       <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %></a><br>
     </li>
   <% }) %>

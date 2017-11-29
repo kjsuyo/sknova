@@ -7,7 +7,6 @@ body {
   padding-left: 50px;
   padding-right: 50px;
   position: relative;
-  float: none;
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
@@ -35,6 +34,7 @@ body
 
 .center {
   padding: 0px;
+  text-align: center;
   align-items: center;
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
@@ -66,7 +66,6 @@ h1.center {
 p.center {
   margin: auto;
   text-align: center;
-  clear:left;
 }
 
 h1, h2 {
@@ -106,31 +105,28 @@ footer {
 
 /* industry box display */
 
-
         .industry_boxes {
-          display: block;
+          display: inline-block;
+          text-align: center;
           margin-right: auto;
           margin-left: auto;
-          padding-left: 100px;
-          padding-right: 100px;
           padding-bottom: 10px;
           width: auto;
           height: auto;
-          max-width: 800px;
+          max-width: 500px;
           position: relative;
-          float: left;
-          text-align: center;
         }
+
 
         .industry_boxes ul {
           list-style: none;
+          text-align: center;
           height: auto;
         }
 
         .industry_boxes ul li {
-            list-style: none;
-            float: left;
-            padding: 0 20px 0 0;
+            display: inline-block;
+            padding: 0 10px 0 10px;
             text-align:center;
             height: auto;
         }
@@ -142,15 +138,18 @@ footer {
           /*
           margin-right: 10px;
           margin-bottom: 7px; */
-          opacity: 0.75;
+          opacity: 1.0;
           -webkit-transition: all 0.3s linear;
           -moz-transition: all 0.3s linear;
           transition: all 0.3s linear;
         }
         .industry_boxes ul li a:hover {
-          opacity: 1.0;
+          opacity: 0.75;
         }
 
         .industry_boxes ul li a img {
           border: 1px solid #e1d9ec;
+          width: 98px;
+          height: 98px;
+          padding: 2px;
         }
