@@ -9,7 +9,7 @@
 <div class="industry_boxes">
 <ul class="industry_boxes">
   <% industries.forEach(function(Industry) { %>
-    <li class="industry_boxes">
+    <li>
       <a href="<%= '/ind/'+Industry.id %>"><img src="/img/placeholder_2.jpg" width="50" height="0"> </a>
       <a href="<%= '/ind/'+Industry.id %>"><%= Industry.name %></a><br>
     </li>
@@ -17,7 +17,7 @@
 </ul>
 </div>
 
-<p>Choose one of the high-growth, high-pay industries above to continue your search.</p>
+<p class="center">Choose one of the high-growth, high-pay industries above to continue your search.</p>
 
 <br><br>Or, <a href="/">start over.</a>
 </div>

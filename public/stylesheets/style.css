@@ -64,7 +64,9 @@ h1.center {
 }
 
 p.center {
+  margin: auto;
   text-align: center;
+  clear:left;
 }
 
 h1, h2 {
@@ -103,28 +105,34 @@ footer {
 
 
 /* industry box display */
+
+
         .industry_boxes {
           display: block;
-          margin: auto;
+          margin-right: auto;
+          margin-left: auto;
           padding-left: 100px;
           padding-right: 100px;
           padding-bottom: 10px;
-          height: auto;
           width: auto;
+          height: auto;
+          max-width: 800px;
           position: relative;
           float: left;
+          text-align: center;
         }
 
         .industry_boxes ul {
           list-style: none;
+          height: auto;
         }
 
         .industry_boxes ul li {
-            display: inline;
             list-style: none;
             float: left;
             padding: 0 20px 0 0;
             text-align:center;
+            height: auto;
         }
 
 
