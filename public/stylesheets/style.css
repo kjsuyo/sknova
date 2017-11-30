@@ -10,6 +10,13 @@ body {
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
+.halfpad {
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+}
+
 .parent {
   width: 100%;
 }
