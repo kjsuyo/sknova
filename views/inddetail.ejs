@@ -6,13 +6,16 @@
   <img width="400" height="400" src="/img/mainstreet.jpg">
 </div>
 
-<h1>Find a Sector</h1>
-<p><%= name %> sectors:</p>
+<h1>Find a Sector.</h1>
+      <h2>Industry: <%= name %></h1><br>
 <div class="padded">
 <ul>
   <% categories.forEach(function(Category) { %>
     <li>
-      - <a href="./<%= id %>/cat/<%= Category.id %>"><%= Category.name %>.</a><br>
+      <a class="button" href="./<%= id %>/cat/<%= Category.id %>">
+        <span class="job"><%= Category.name %></span>
+        <i class="chevron"></i>
+      </a>
     </li>
   <% }) %>
 </ul>

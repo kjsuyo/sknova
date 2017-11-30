@@ -8,16 +8,22 @@
 
 <div class="padded">
 
-      <p><%= name %> jobs:</p><br>
+      <h2>Sector: <%= name %></h1><br>
+
+        <div style="float:left;padding-left:25px;text-decoration:underline">Job or Occupation</div>
+        <div style="float:right;padding-right:25px;text-decoration:underline">Median Salary</div>
+        <br>
 
 <ul>
   <% jobs.forEach(function(Job) { %>
     <li>
-      <a href="./<%= id %>/job/<%= Job.id %>"><%= Job.jobtitle %>:
-        </a>
-        <span><br>Median salary: <%= numeral(Job.median_wage_2016).format('$0,0') %>
-        <br>Long-term job growth outlook: <%= Job.empl_change_pct %>%
-        <br><br>Description: <%= Job.description %></span><br><br>
+        <a class="button" href="./<%= id %>/job/<%= Job.id %>">
+        <span class="job"><%= Job.jobtitle %></span>
+        <span class="meta description"><%= Job.description.substr(0,100) %>...</span>
+        <span class="meta salary"><%= numeral(Job.median_wage_2016).format('$0,0') %></span>
+        <i class="chevron"></i>
+      </a>
+
     </li>
   <% }) %>
 </ul>

@@ -6,18 +6,46 @@
 </div>
 <div class="padded">
 <h1><%= jobtitle %></h1>
-<p>Description:<br><%= description %></p><br>
-Median salary: <%= numeral(median_wage_2016).format('$0,0') %><br>
-Long-term job growth outlook: <%= empl_change_pct %>%
-<br><br><p><%= jobtitle %> may be responsible for the following tasks:
+<div class="padded">
+
+<p class=italic><%= description %></p><br>
+</div>
+</div>
+
+<div class="center">
+<div class="boxdisp"><h2><%= numeral(median_wage_2016).format('$0,0') %></h2><p>Median salary</p></div>
+<div class="boxdisp"><h2><%= empl_change_pct %>%</h2><p>Long-term job growth</p></div>
+<br><br><br>
+</div>
+
+<div class="padded">
+<div id="divider"></div>
+<div class="padded">
+<h2>Tasks</h2>
+<p><%= jobtitle %> may be responsible for the following tasks:
 <ul>
   <% tasks.forEach(function(Task) { %>
     <li>- <%= Task.name %>
     </li>
-  <% }) %>
-</ul>
+  <% }) %></p>
+</ul><br>
 </div>
+<div id="divider"></div>
 <div class="padded">
+
+<h2>Education</h2>
+<p>Check your local college for information about educational opportunities in this field.</p><br>
+
+</div>
+  <div id="divider"></div><br>
+  <div class="padded">
+
+  <h2>Careers</h2>
+  <p>Looking for a career in this field?  Check your local job board site.</p><br>
+
+  </div>
+    <div id="divider"></div><br>
+
 <a href="/">Do it again.</a>
 </div>
 </body>
