@@ -183,6 +183,24 @@ footer {
   opacity: 0.75;
 }
 
+.buttonind {
+  display: block;
+  text-align: left;
+  position: relative;
+  padding: .75em 0em .75em 1em;
+  border-radius: .25em;
+  margin-bottom: .5em;
+  background: #e0f2f1;
+  box-shadow:
+    0 .0625em .125em rgba(0, 0, 0, .125),
+    inset 0 -.25em 0 -.125em rgba(0, 0, 0, .125),
+    inset 1em 0 0 -.7em rgba(77, 182, 172, .5),
+    inset -2em 0 0 -.3em rgba(0, 0, 0, .05);
+}
+.buttonind:hover {
+  opacity: 0.75;
+}
+
 .job {
   font-weight: bold;
   color: #000;
