@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 *.sqlite
 *.postgres
+database_production_12617.dump
