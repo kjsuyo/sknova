@@ -12,7 +12,7 @@
 <ul>
   <% categories.forEach(function(Category) { %>
     <li>
-      <a class="buttonind" href="./<%= id %>/cat/<%= Category.id %>">
+      <a class="buttonind" href="./<%= id %>/cat/<%= Category.id %>?area=<%= queryAreaId %>">
         <span class="job"><%= Category.name %></span>
         <i class="chevron"></i>
       </a>

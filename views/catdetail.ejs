@@ -16,15 +16,21 @@
 </div>
 <ul>
   <% jobs.forEach(function(Job) { %>
+
+    <% Job.Areas.forEach(function(Area) { %>
+
     <li>
-        <a class="button" href="./<%= id %>/job/<%= Job.id %>">
+        <a class="button" href="./<%= id %>/job/<%= Job.id %>?area=<%= Area.code %>">
         <span class="job"><%= Job.jobtitle %></span>
         <span class="meta description"><%= Job.description.substr(0,100) %>...</span>
-        <span class="meta salary"><%= numeral(Job.median_wage_2016).format('$0,0') %></span>
+        <span class="meta salary"><%= numeral(Area.JobArea.a_mean).format('$0,0') %></span>
         <i class="chevron"></i>
       </a>
 
     </li>
+
+
+    <% }) %>
   <% }) %>
 </ul>
 </div>

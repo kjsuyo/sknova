@@ -12,11 +12,17 @@
 </div>
 </div>
 
+
+<% job.Areas.forEach(function(Area) { %>
+
 <div class="center">
-<div class="boxdisp"><h2><%= numeral(median_wage_2016).format('$0,0') %></h2><p>Median salary</p></div>
+<div class="boxdisp"><h2><%= numeral(Area.JobArea.a_mean).format('$0,0') %></h2><p>Median salary</p></div>
 <div class="boxdisp"><h2><%= empl_change_pct %>%</h2><p>Long-term job growth</p></div>
 <br><br><br>
 </div>
+
+
+    <% }) %>
 
 <div class="padded">
 <div id="divider"></div>
@@ -45,6 +51,7 @@
 
   </div>
     <div id="divider"></div><br>
+
 
 <a href="/">Do it again.</a>
 </div>

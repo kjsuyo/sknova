@@ -14,6 +14,13 @@ module.exports = {
       industry: {
         type: Sequelize.STRING
       },
+
+      description: {
+        type: Sequelize.STRING
+      },
+      type: {
+        type: Sequelize.STRING
+      },
       industryId: {
         type: Sequelize.INTEGER,
         references: {
@@ -21,12 +28,6 @@ module.exports = {
           key: 'id',
           as: 'industryId',
         },
-      },
-      description: {
-        type: Sequelize.STRING
-      },
-      type: {
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: true,

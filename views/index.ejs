@@ -17,11 +17,23 @@ Search careers on SkillTerrier to find the job that's right for you.  Learn what
 And find educational opportunities to get you the skills you need.<br><br>
 Your favorite job is waiting for you.  What are you waiting for?</p><br>
 
-<a><form action="ind/" method="get">
-  <button class="btn waves-effect waves-light" type="submit">Start here.
-  </button>
-</form></a>
-</div>
+ <!-- Dropdown Trigger -->
+<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Select your State</a>
+
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content'>
+
+  <% areas.forEach(function(Area) { %>
+
+      <li><a href="ind/?area=<%= Area.code %>"><%= Area.name %></a></li>
+
+      <% }) %>
+
+    </ul>
+    <br>
+    <br>
+
+Or search nationally <a href="/ind/?area=99">here.</a>
 
 </body>
 </html>

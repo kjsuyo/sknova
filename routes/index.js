@@ -2,16 +2,15 @@ var models  = require('../models/index');
 var express = require('express');
 var router  = express.Router();
 
-const jobsController = require('../controllers').jobs;
-const catController = require('../controllers').categories;
+const areasController = require('../controllers').areas;
 const indController = require('../controllers').industries;
-
-
+const catController = require('../controllers').categories;
+const jobsController = require('../controllers').jobs;
 
 module.exports = (app) => {
 
-//  app.get('/', jobsController.index);
-  app.get('/', (req, res) => res.render('index', {title: 'Homepage'}));
+  app.get('/', areasController.index);
+
   app.get('/about', (req, res) => res.render('about'));
   app.get('/contact', (req, res) => res.render('contact'));
 
@@ -22,6 +21,6 @@ module.exports = (app) => {
   app.get('/ind/:industryId/cat/:categoryId', catController.retrieve);
 
   app.get('/ind/:industryId/cat/:categoryId/job', jobsController.list);
-  app.get('/ind/:industryId/cat/:categoryId/job/:id', jobsController.retrieve);
+  app.get('/ind/:industryId/cat/:categoryId/job/:jobId', jobsController.retrieve);
 
 };

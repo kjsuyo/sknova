@@ -6,6 +6,8 @@ var numeral = require('numeral');
 const Industry = require('../models').Industry;
 const Category = require('../models').Category;
 const Job = require('../models').Job;
+const JobArea = require('../models').JobArea;
+const Area = require('../models').Area;
 
 module.exports = {
 
@@ -19,12 +21,27 @@ module.exports = {
   },
 
   retrieve(req, res) {
+
+
+    if (!req.query.area)
+      {
+        var queryAreaId = '99'
+      } else{
+        var queryAreaId = req.query.area
+      };
+
     return Category
       .findById(req.params.categoryId, {
-        include: [{
+        include: [
+          {
           model: Job,
           as: 'jobs',
-        }],
+            include: {
+              model: Area,
+          through: { attributes: ['a_mean'] },
+          where: {'code': queryAreaId},
+        },
+      }],
       })
       .then(category => {
         if (!category) {
@@ -43,5 +60,6 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
     }
+
 
 };

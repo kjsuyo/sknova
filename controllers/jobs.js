@@ -5,6 +5,7 @@ var numeral = require('numeral');
 
 const Job = require('../models').Job;
 const Task = require('../models').Task;
+const Area = require('../models').Area;
 
 module.exports = {
 
@@ -15,22 +16,51 @@ module.exports = {
   },
 
   list(req, res) {
-    models.Job.findAll().then(function(jobs) {
+    models.Job.findAll({
+      include: [{
+        model: Task,
+        as: 'tasks',
+      }]
+    })
+    .then(function(jobs) {
       res.render('joblisting', {
         title: 'Job Listing',
         jobs: jobs,
-        numeral: numeral
+      });
+    });
+  },
+
+  tasklist(req, res) {
+    models.Task.findAll()
+    .then(function(tasks) {
+      res.render('joblisting', {
+        title: 'Task Listing',
+        tasks: tasks,
       });
     });
   },
 
   retrieve(req, res) {
-    return Job
-      .findById(req.params.id, {
-        include: [{
-          model: Task,
-          as: 'tasks',
-        }],
+    if (!req.query.area)
+      {
+        var queryAreaId = '99'
+      } else{
+        var queryAreaId = req.query.area
+      };
+
+      return Job
+      .findById(req.params.jobId, {
+        include: [
+          {
+            model: Task,
+            as: 'tasks',
+            limit: 10,
+          },
+          {
+          model: Area,
+         through: { attributes: ['a_mean'] },
+          where: {'code': queryAreaId},
+        }]
       })
       .then(job => {
         if (!job) {
@@ -40,11 +70,12 @@ module.exports = {
         }
         return res.status(200).render('jobdetail', {
           title: 'Job Detail Page',
+          job: job,
+          areas: job.areas,
           jobtitle: job.jobtitle,
           industry: job.industry,
           description: job.description,
           tasks: job.tasks,
-          median_wage_2016: job.median_wage_2016,
           empl_change_pct: job.empl_change_pct,
           numeral: numeral
         });
