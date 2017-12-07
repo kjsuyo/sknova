@@ -28,6 +28,10 @@
 <div id="divider"></div>
 <div class="halfpad">
 <h2>Tasks</h2>
+
+
+<% if (tasks.length > 0) { %>
+
 <p><%= jobtitle %> may be responsible for the following tasks:
 <ul>
   <% tasks.forEach(function(Task) { %>
@@ -35,6 +39,12 @@
     </li>
   <% }) %></p>
 </ul><br>
+<% } else { %>
+  <p>We don't currently have any tasks defined for <%= jobtitle %>.  Try another job, or check your local education provider.</p>
+<br>
+<% } %>
+
+
 </div>
 <div id="divider"></div>
 <div class="halfpad">

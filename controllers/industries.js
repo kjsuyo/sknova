@@ -25,12 +25,6 @@ module.exports = {
   },
 
   retrieve(req, res) {
-    if (!req.query.area)
-      {
-        var queryAreaId = '99'
-      } else{
-        var queryAreaId = req.query.area
-      };
     return Industry
       .findById(req.params.industryId, {
         include: [{

@@ -11,12 +11,14 @@
 <div class="padded">
 <ul>
   <% categories.forEach(function(Category) { %>
+    <% if(Category.name!="Military") { %>
     <li>
       <a class="buttonind" href="./<%= id %>/cat/<%= Category.id %>?area=<%= queryAreaId %>">
         <span class="job"><%= Category.name %></span>
         <i class="chevron"></i>
       </a>
     </li>
+    <% } %>
   <% }) %>
 </ul>
 <br><br><p>See where new paths can take you.</p>

@@ -19,6 +19,8 @@
 
     <% Job.Areas.forEach(function(Area) { %>
 
+        <% if (Area.JobArea.a_mean > 0) { %>
+
     <li>
         <a class="button" href="./<%= id %>/job/<%= Job.id %>?area=<%= Area.code %>">
         <span class="job"><%= Job.jobtitle %></span>
@@ -29,6 +31,7 @@
 
     </li>
 
+    <% } %>
 
     <% }) %>
   <% }) %>
