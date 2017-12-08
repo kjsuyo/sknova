@@ -6,7 +6,12 @@
 </div>
 <div class="padded">
 <h1><%= jobtitle %></h1>
+
 <div class="halfpad">
+  <% job.Areas.forEach(function(Area) { %>
+   <h2>Area: <%= Area.name %></h2>
+
+    <% }) %>
 
 <p class=italic><%= description %></p><br>
 </div>
