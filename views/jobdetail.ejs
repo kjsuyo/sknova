@@ -30,43 +30,36 @@
     <% }) %>
 
 <div class="padded">
-<div id="divider"></div>
-<div class="halfpad">
-<h2>Tasks</h2>
 
+<ul class="collapsible" data-collapsible="expandable">
+  <li>
+    <div class="collapsible-header active teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Tasks</div>
+    <div class="collapsible-body teal lighten-5"><span>
+      <% if (tasks.length > 0) { %>
 
-<% if (tasks.length > 0) { %>
+      <p><%= jobtitle %> may be responsible for the following tasks:
+      <ul>
+        <% tasks.forEach(function(Task) { %>
+          <li>- <%= Task.name %>
+          </li>
+        <% }) %></p>
+      </ul>
+      <% } else { %>
+        <p>We don't currently have any tasks defined for <%= jobtitle %>.  Try another job, or check your local education provider.</p>
+      <% } %>
+    </span></div>
+  </li>
 
-<p><%= jobtitle %> may be responsible for the following tasks:
-<ul>
-  <% tasks.forEach(function(Task) { %>
-    <li>- <%= Task.name %>
-    </li>
-  <% }) %></p>
-</ul><br>
-<% } else { %>
-  <p>We don't currently have any tasks defined for <%= jobtitle %>.  Try another job, or check your local education provider.</p>
-<br>
-<% } %>
+  <li>
+    <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Education</div>
+    <div class="collapsible-body teal lighten-5"><span>We don't currently have any tasks defined for <%= jobtitle %>.  Try another job, or check your local education provider.</span></div>
+  </li>
 
-
-</div>
-<div id="divider"></div>
-<div class="halfpad">
-
-<h2>Education</h2>
-<p>Check your local college for information about educational opportunities in this field.</p><br>
-
-</div>
-  <div id="divider"></div><br>
-  <div class="halfpad">
-
-  <h2>Careers</h2>
-  <p>Looking for a career in this field?  Check your local job board site.</p><br>
-
-  </div>
-    <div id="divider"></div><br>
-
+  <li>
+    <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Careers</div>
+    <div class="collapsible-body teal lighten-5"><span>Looking for a career in this field?  Check your local job board site.</span></div>
+  </li>
+</ul>
 
 <a href="/">Do it again.</a>
 </div>
