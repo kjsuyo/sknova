@@ -107,6 +107,9 @@
 <div class="collapsible-body teal lighten-5"><span>
 
 <u>Job Zone</u>
+
+<% if (zone != null) { %>
+
 <p><%= job.Zone.name %>.</p>
 <ul>
   <li><p>- <%= job.Zone.experience %></p></li>
@@ -114,6 +117,10 @@
   <li><p>- <%= job.Zone.training %></p></li>
   <li><p>- <%= job.Zone.examples %></p></li>
 </ul>
+
+<% } else { %>
+  <p>Job zones</p>
+  <% } %>
 
 </span>
 </li>
