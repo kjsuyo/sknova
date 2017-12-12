@@ -32,6 +32,9 @@
 <div class="padded">
 
 <ul class="collapsible" data-collapsible="expandable">
+
+  <!-- Tasks -->
+
   <li>
     <div class="collapsible-header active teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Tasks</div>
     <div class="collapsible-body teal lighten-5"><span>
@@ -50,18 +53,96 @@
     </span></div>
   </li>
 
+  <!-- Education providers -->
+
   <li>
     <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Education</div>
-    <div class="collapsible-body teal lighten-5"><span>We don't currently have any tasks defined for <%= jobtitle %>.  Try another job, or check your local education provider.</span></div>
+    <div class="collapsible-body teal lighten-5"><span>We don't currently have any educational opportunities defined for <%= jobtitle %>.  Try another job, or check your local education provider.</span></div>
   </li>
+
+<!-- Job boards -->
 
   <li>
-    <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Careers</div>
+    <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Jobs in Your Area</div>
     <div class="collapsible-body teal lighten-5"><span>Looking for a career in this field?  Check your local job board site.</span></div>
   </li>
+
+<!-- Career Changers and Starters -->
+
+<li>
+<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Related Careers</div>
+<div class="collapsible-body teal lighten-5"><span>
+
+  <u>Jobs for Job Changers</u>
+  <p>Looking to change careers?  Here are some jobs that are similar to this one.</p>
+
+<ul>
+  <% changers.forEach(function(Changer) { %>
+
+    <li>- <a href="../../<%= Changer.categoryId %>/job/<%= Changer.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
+      <%= Changer.jobtitle %></a>
+    </li>
+  <% }) %></p>
 </ul>
 
+<br>
+<p><u>Jobs to Get Started</u></p>
+<p>Looking to get started in this career?  Here are some jobs that will give you valuable experience on the way.</p>
+
+<ul>
+  <% starters.forEach(function(Starter) { %>
+
+    <li>- <a href="../../<%= Starter.categoryId %>/job/<%= Starter.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
+      <%= Starter.jobtitle %></a>
+    </li>
+  <% }) %></p>
+</ul>
+</span>
+</li>
+
+<!-- Job Zones -->
+
+<li>
+<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Job Environment</div>
+<div class="collapsible-body teal lighten-5"><span>
+
+<u>Job Zone</u>
+<p><%= job.Zone.name %>.</p>
+<ul>
+  <li><p>- <%= job.Zone.experience %></p></li>
+  <li><p>- <%= job.Zone.education %></p></li>
+  <li><p>- <%= job.Zone.training %></p></li>
+  <li><p>- <%= job.Zone.examples %></p></li>
+</ul>
+
+</span>
+</li>
+
+
+<!-- Job Zones -->
+
+<li>
+<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Job Environment</div>
+<div class="collapsible-body teal lighten-5"><span>
+
+test
+
+</span>
+</li>
+
+
+<!-- end -->
+
+</div>
+</ul>
+<div class="padded">
+  <div class="halfpad">
+<br>
 <a href="/">Do it again.</a>
+</div>
+<div>
+
+
 </div>
 </body>
 </html>

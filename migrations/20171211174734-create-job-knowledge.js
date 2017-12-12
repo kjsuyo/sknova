@@ -1,21 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Tasks', {
+    return queryInterface.createTable('JobKnowledges', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      onetid: {
-        type: Sequelize.STRING
+      importance: {
+        type: Sequelize.FLOAT
       },
-      name: {
-        type: Sequelize.STRING(511)
-      },
-      green_value: {
-        type: Sequelize.STRING
+      level: {
+        type: Sequelize.FLOAT
       },
       jobId: {
         type: Sequelize.INTEGER,
@@ -23,6 +20,14 @@ module.exports = {
           model: 'Jobs',
           key: 'id',
           as: 'jobId',
+        },
+      },
+      knowledgeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Knowledge',
+          key: 'id',
+          as: 'knowledgeId',
         },
       },
       createdAt: {
@@ -36,6 +41,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Tasks');
+    return queryInterface.dropTable('JobKnowledges');
   }
 };

@@ -9,12 +9,15 @@ module.exports = (sequelize, DataTypes) => {
     jobtitle: DataTypes.STRING,
     description: DataTypes.STRING(1234),
     empl_change_pct: DataTypes.FLOAT,
+    green_value: DataTypes.STRING,
 });
-
 
   Job.associate = (models) => {
     Job.belongsTo(models.Category, {
       foreignKey: 'categoryId',
+    });
+    Job.belongsTo(models.Zone, {
+      foreignKey: 'zoneId',
     });
     Job.hasMany(models.Task, {
       foreignKey: 'jobId',
@@ -22,32 +25,44 @@ module.exports = (sequelize, DataTypes) => {
     });
     Job.belongsToMany(models.Area, {
       through: 'JobArea',
+      foreignKey: 'jobId'
+    });
+    Job.belongsToMany(models.Job, {
+      as: 'jobstarters',
+      through: 'JobStarter',
+      foreignKey: 'jobId',
+      otherKey: 'jobstarterId'
+    });
+    Job.belongsToMany(models.Job, {
+      as: 'jobchangers',
+      through: 'JobChanger',
+      foreignKey: 'jobId',
+      otherKey: 'jobchangerId'
+    });
+
+//haven't done below this
+
+    Job.belongsToMany(models.Degree, {
+      through: 'JobDegree',
+    });
+    Job.belongsToMany(models.Knowledge, {
+      through: 'JobKnowledge',
+    });
+    Job.belongsToMany(models.Skill, {
+      through: 'JobSkill',
+    });
+    Job.belongsToMany(models.Interest, {
+      through: 'JobInterest',
+    });
+    Job.belongsToMany(models.Ability, {
+      through: 'JobAbility',
+    });
+    Job.belongsToMany(models.Value, {
+      through: 'JobValue',
+    });
+    Job.belongsToMany(models.Style, {
+      through: 'JobStyle',
     });
 };
   return Job;
 };
-
-/*
-
-  Job.associate = (models) => {
-    Job.belongsTo(models.Category, {
-      foreignKey: 'categoryId',
-    });
-};
-
-Job.associate = (models) => {
-  Job.hasMany(models.Task, {
-    foreignKey: 'jobId',
-    as: 'tasks',
-  });
-};
-
-
-Job.associate = (models) => {
-  Job.belongsToMany(models.Area, {
-    through: 'JobArea',
-  });
-};
-  return Job;
-};
-*/

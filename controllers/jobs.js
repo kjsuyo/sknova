@@ -6,6 +6,9 @@ var numeral = require('numeral');
 const Job = require('../models').Job;
 const Task = require('../models').Task;
 const Area = require('../models').Area;
+const Zone = require('../models').Zone;
+const JobChanger = require('../models').JobChanger;
+const JobStarter = require('../models').JobStarter;
 
 module.exports = {
 
@@ -57,10 +60,35 @@ module.exports = {
             limit: 10,
           },
           {
+            model: Zone,
+            otherKey: 'zoneId'
+            },
+          {
           model: Area,
          through: { attributes: ['a_mean'] },
           where: {'code': queryAreaId},
-        }]
+        },
+          {
+          model: Job,
+          as: 'jobchangers',
+          through: {
+            model: JobChanger,
+            attributes: []
+          },
+          foreignKey: 'jobId',
+          otherKey: 'jobchangerId'
+        },
+          {
+          model: Job,
+          as: 'jobstarters',
+          through: {
+            model: JobStarter,
+            attributes: []
+          },
+          foreignKey: 'jobId',
+          otherKey: 'jobstarterId'
+        }
+      ]
       })
       .then(job => {
         if (!job) {
@@ -72,11 +100,14 @@ module.exports = {
           title: 'Job Detail Page',
           job: job,
           areas: job.areas,
+          zone: job.zone,
           jobtitle: job.jobtitle,
           industry: job.industry,
           description: job.description,
           tasks: job.tasks,
           empl_change_pct: job.empl_change_pct,
+          changers: job.jobchangers,
+          starters: job.jobstarters,
           numeral: numeral
         });
       })

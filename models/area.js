@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   Area.associate = (models) => {
     Area.belongsToMany(models.Job, {
       through: 'JobArea',
+      foreignKey: 'areaId'
     });
   };
   return Area;

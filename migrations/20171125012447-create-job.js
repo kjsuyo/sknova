@@ -32,6 +32,17 @@ module.exports = {
       empl_change_pct: {
         type: Sequelize.FLOAT
       },
+      green_value: {
+        type: Sequelize.STRING
+      },
+      zoneId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Zones',
+          key: 'id',
+          as: 'zoneId',
+        }
+      },
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
