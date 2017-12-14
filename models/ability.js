@@ -1,10 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Ability = sequelize.define('Ability', {
-    onetid: DataTypes.STRING,
+//    onetid: DataTypes.STRING,
     name: DataTypes.STRING,
     description: DataTypes.STRING(310)
-  }, {
+  },
+  {
+    timestamps: false
+  },
+  {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
@@ -14,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Ability.associate = (models) => {
     Ability.belongsToMany(models.Job, {
       through: 'JobAbility',
+      foreignKey: 'abilityId',
+      foreignKeyConstraint: true
     });
 };
   return Ability;

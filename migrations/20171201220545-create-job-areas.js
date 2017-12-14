@@ -94,16 +94,8 @@ module.exports = {
           model: 'Areas',
           key: 'id',
           as: 'areaId',
-        },
+        }
       },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      }
     });
   },
   down: (queryInterface, Sequelize) => {

@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     education: DataTypes.STRING,
     training: DataTypes.STRING,
     examples: DataTypes.STRING,
-    svp: DataTypes.STRING
-  }, {
+//    svp: DataTypes.STRING
+  },
+  {
+    timestamps: false
+  },
+  {
     classMethods: {
       associate: function(models) {
         // associations can be defined here

@@ -26,14 +26,6 @@ module.exports = {
           key: 'id',
           as: 'valueId',
         },
-      },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
       }
     });
   },

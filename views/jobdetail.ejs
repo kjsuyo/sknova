@@ -5,7 +5,7 @@
   <img width="400" height="400" src="/img/mainstreet.jpg">
 </div>
 <div class="padded">
-<h1><%= jobtitle %></h1>
+<h1><%= job.jobtitle %></h1>
 
 <div class="halfpad">
   <% job.Areas.forEach(function(Area) { %>
@@ -13,7 +13,7 @@
 
     <% }) %>
 
-<p class=italic><%= description %></p><br>
+<p class=italic><%= job.description %></p><br>
 </div>
 </div>
 
@@ -22,7 +22,7 @@
 
 <div class="center">
 <div class="boxdisp"><h2><%= numeral(Area.JobArea.a_mean).format('$0,0') %></h2><p>Median salary</p></div>
-<div class="boxdisp"><h2><%= empl_change_pct %>%</h2><p>Long-term job growth</p></div>
+<div class="boxdisp"><h2><%= job.empl_change_pct %>%</h2><p>Long-term job growth</p></div>
 <br><br><br>
 </div>
 
@@ -40,7 +40,7 @@
     <div class="collapsible-body teal lighten-5"><span>
       <% if (tasks.length > 0) { %>
 
-      <p><%= jobtitle %> may be responsible for the following tasks:
+      <p><%= job.jobtitle %> may be responsible for the following tasks:
       <ul>
         <% tasks.forEach(function(Task) { %>
           <li>- <%= Task.name %>
@@ -48,16 +48,56 @@
         <% }) %></p>
       </ul>
       <% } else { %>
-        <p>We don't currently have any tasks defined for <%= jobtitle %>.  Try another job, or check your local education provider.</p>
+        <p>We don't currently have any tasks defined for <%= job.jobtitle %>.  Try another job, or check your local education provider.</p>
       <% } %>
     </span></div>
   </li>
 
-  <!-- Education providers -->
+  <!-- Education, Degrees, Knowledge -->
 
   <li>
     <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Education</div>
-    <div class="collapsible-body teal lighten-5"><span>We don't currently have any educational opportunities defined for <%= jobtitle %>.  Try another job, or check your local education provider.</span></div>
+    <div class="collapsible-body teal lighten-5"><span>
+
+<!-- education -->
+
+
+      <u>Degrees and Education</u>
+<ul>
+<li><p>- <%= zone.education %></p></li>
+</ul>
+<br>
+
+<!-- Degrees -->
+
+
+
+<!-- Knowledge -->
+
+<u>Key Knowledge Areas</u>
+
+<% if (knowledges != null) { %>
+
+<p>People in this career typically have strong backgrounds in:
+
+  <% knowledges.forEach(function(Knowledge) { %>
+    <ul>
+      <% if (Knowledge.JobKnowledge.importance >= 4) { %>
+    <li><p><b><%= Knowledge.name %></b>.  <%= Knowledge.description %></p></li>
+      <% } %>
+</ul>
+<% }) %>
+
+<% } else { %>
+  <p>We don't have any job knowledge information yet.  Please check again later.</p>
+  <% } %>
+<br>
+
+<!-- end -->
+
+</span>
+</div>
+
   </li>
 
 <!-- Job boards -->
@@ -77,53 +117,174 @@
   <p>Looking to change careers?  Here are some jobs that are similar to this one.</p>
 
 <ul>
-  <% changers.forEach(function(Changer) { %>
+  <% job.jobchangers.forEach(function(Jobchanger) { %>
 
-    <li>- <a href="../../<%= Changer.categoryId %>/job/<%= Changer.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
-      <%= Changer.jobtitle %></a>
+    <li>- <a href="../../<%= Jobchanger.categoryId %>/job/<%= Jobchanger.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
+      <%= Jobchanger.jobtitle %></a>
     </li>
   <% }) %></p>
 </ul>
 
-<br>
 <p><u>Jobs to Get Started</u></p>
 <p>Looking to get started in this career?  Here are some jobs that will give you valuable experience on the way.</p>
 
 <ul>
-  <% starters.forEach(function(Starter) { %>
+  <% job.jobstarters.forEach(function(Jobstarter) { %>
 
-    <li>- <a href="../../<%= Starter.categoryId %>/job/<%= Starter.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
-      <%= Starter.jobtitle %></a>
+    <li>- <a href="../../<%= Jobstarter.categoryId %>/job/<%= Jobstarter.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
+      <%= Jobstarter.jobtitle %></a>
     </li>
   <% }) %></p>
 </ul>
 </span>
+</div>
 </li>
 
-<!-- Job Zones -->
+<!-- Environment -->
+
+    <li>
+    <div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Job Environment, Styles, and Values</div>
+    <div class="collapsible-body teal lighten-5"><span>
+
+    <!-- Job Zone -->
+
+    <u>Job Zone</u>
+
+    <% if (zone != null) { %>
+
+    <p><%= zone.name %>.</p>
+    <ul>
+      <li><p>- <%= zone.experience %></p></li>
+      <li><p>- <%= zone.training %></p></li>
+      <li><p>- <%= zone.examples %></p></li>
+    </ul>
+
+    <% } else { %>
+      <p>We don't have any job zone information yet.  Please check again later.</p>
+      <% } %>
+<br>
+    <!-- Job Styles -->
+
+    <u>Job Styles</u>
+
+        <% if (styles != null) { %>
+
+    <p>People in this career typically score highly on:
+
+      <% styles.forEach(function(Style) { %>
+        <ul>
+          <% if (Style.JobStyle.value >= 4) { %>
+        <li><p><b><%= Style.name %></b>.  <%= Style.description %></p></li>
+          <% } %>
+</ul>
+    <% }) %>
+
+    <% } else { %>
+      <p>We don't have any job style information yet.  Please check again later.</p>
+      <% } %>
+<br>
+
+      <!-- Job Values -->
+
+      <u>Job Values</u>
+
+            <% if (values != null) { %>
+
+      <p>People in this career typically score highly on:
+
+        <% values.forEach(function(Value) { %>
+          <ul>
+            <% if (Value.JobValue.value >= 4) { %>
+          <li><p><b><%= Value.name %></b>.  <%= Value.description %></p></li>
+            <% } %>
+  </ul>
+      <% }) %>
+
+      <% } else { %>
+        <p>We don't have any job values information yet.  Please check again later.</p>
+        <% } %>
+  <br>
+
+    <!-- end section -->
+
+    </span>
+  </div>
+    </li>
+
+<!-- Skills, Interests, Abilities -->
 
 <li>
-<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Job Environment</div>
+<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Skills, Interests, and Abilities</div>
 <div class="collapsible-body teal lighten-5"><span>
 
-<u>Job Zone</u>
+  <!-- Job Skills -->
 
-<% if (job.Zone != null) { %>
+  <u>Job Skills</u>
 
-<p><%= job.Zone.name %>.</p>
-<ul>
-  <li><p>- <%= job.Zone.experience %></p></li>
-  <li><p>- <%= job.Zone.education %></p></li>
-  <li><p>- <%= job.Zone.training %></p></li>
-  <li><p>- <%= job.Zone.examples %></p></li>
+    <% if (skills != null) { %>
+
+  <p>People in this career typically score highly on:
+
+    <% skills.forEach(function(Skill) { %>
+      <ul>
+        <% if (Skill.JobSkill.importance >= 3.8) { %>
+      <li><p><b><%= Skill.name %></b>.  <%= Skill.description %></p></li>
+        <% } %>
 </ul>
+  <% }) %>
 
-<% } else { %>
-  <p>We don't have any job zone information yet.  Please check again later.</p>
-  <% } %>
+  <% } else { %>
+    <p>We don't have any job skill information yet.  Please check again later.</p>
+    <% } %>
+<br>
 
-</span>
-</li>
+  <!-- Job Interests -->
+
+  <u>Job Interests</u>
+
+    <% if (interests != null) { %>
+
+  <p>People in this career are typically:
+
+    <% interests.forEach(function(Interest) { %>
+      <ul>
+        <% if (Interest.JobInterest.value >= 4) { %>
+      <li><p><b><%= Interest.name %></b>.  <%= Interest.description %></p></li>
+        <% } %>
+</ul>
+  <% }) %>
+
+  <% } else { %>
+    <p>We don't have any job interest information yet.  Please check again later.</p>
+    <% } %>
+<br>
+
+    <!-- Job Abilities -->
+
+    <u>Job Abilities</u>
+
+        <% if (abilities != null) { %>
+
+    <p>People in this career typically have strong:
+
+      <% abilities.forEach(function(Ability) { %>
+        <ul>
+          <% if (Ability.JobAbility.importance >= 4) { %>
+        <li><p><b><%= Ability.name %></b>.  <%= Ability.description %></p></li>
+          <% } %>
+  </ul>
+    <% }) %>
+
+    <% } else { %>
+      <p>We don't have any job ability information yet.  Please check again later.</p>
+      <% } %>
+  <br>
+
+  <!-- end section -->
+
+  </span>
+</div>
+  </li>
 
 <!-- end -->
 
@@ -133,10 +294,6 @@
   <div class="halfpad">
 <br>
 <a href="/">Do it again.</a>
-</div>
-<div>
-
-
 </div>
 </body>
 </html>

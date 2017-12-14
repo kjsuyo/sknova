@@ -5,7 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     type_id: DataTypes.INTEGER,
     type: DataTypes.STRING
-  }, {
+  },
+  {
+    timestamps: false
+  },
+  {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
@@ -15,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   Area.associate = (models) => {
     Area.belongsToMany(models.Job, {
       through: 'JobArea',
-      foreignKey: 'areaId'
+      foreignKey: 'areaId',
+      foreignKeyConstraint: true
     });
   };
   return Area;

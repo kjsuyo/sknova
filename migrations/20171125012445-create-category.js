@@ -28,14 +28,6 @@ module.exports = {
           key: 'id',
           as: 'industryId',
         },
-      },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
       }
     });
   },

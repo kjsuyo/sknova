@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     industry: DataTypes.STRING,
     description: DataTypes.STRING,
     type: DataTypes.STRING,
+},
+{
+  timestamps: false
 });
   Category.associate = (models) => {
   Category.belongsTo(models.Industry, {
@@ -15,6 +18,7 @@ Category.associate = (models) => {
   Category.hasMany(models.Job, {
     foreignKey: 'categoryId',
     as: 'jobs',
+    foreignKeyConstraint: true
   });
 };
   return Category;

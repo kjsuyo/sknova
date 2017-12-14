@@ -35,14 +35,6 @@ module.exports = {
           key: 'id',
           as: 'degreeId',
         },
-      },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
       }
     });
   },

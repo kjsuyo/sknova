@@ -28,15 +28,7 @@ module.exports = {
           model: 'Knowledge',
           key: 'id',
           as: 'knowledgeId',
-        },
-      },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
+        }
       }
     });
   },

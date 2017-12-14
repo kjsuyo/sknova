@@ -18,14 +18,6 @@ module.exports = {
           key: 'id',
           as: 'jobId',
         },
-      },
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
       }
     });
   },

@@ -1,0 +1,88 @@
+<!-- views/jobdetail.ejs -->
+<html>
+<body>
+  <div class="parent">
+  <img width="400" height="400" src="/img/mainstreet.jpg">
+</div>
+<div class="padded">
+<h1><%= job.jobtitle %></h1>
+
+
+<u>Job Styles</u>
+
+<p>People in this career typically score highly on:
+
+<% if (styles != null) { %>
+  <% styles.forEach(function(Style) { %>
+    <ul>
+      <% if (Style.JobStyle.value >= 4) { %>
+    <li><p><b><%= Style.name %></b>.  <%= Style.JobStyle.value %></p></li>
+      <% } %>
+</ul>
+<% }) %>
+
+<% } else { %>
+  <p>We don't have any job style information yet.  Please check again later.</p>
+  <% } %>
+<br>
+
+<% job.Areas.forEach(function(Area) { %>
+
+<div class="center">
+<div class="boxdisp"><h2><%= Area.JobArea.a_mean %></h2><p>Median salary</p></div>
+<div class="boxdisp"><h2><%= job.empl_change_pct %>%</h2><p>Long-term job growth</p></div>
+<br><br><br>
+</div>
+
+
+    <% }) %>
+
+<br><br>
+
+
+    <u>Job Zone</u>
+
+    <% if (zone != null) { %>
+
+    <p><%= zone.name %>.</p>
+    <ul>
+      <li><p>- <%= zone.experience %></p></li>
+      <li><p>- <%= zone.education %></p></li>
+      <li><p>- <%= zone.training %></p></li>
+      <li><p>- <%= zone.examples %></p></li>
+    </ul>
+
+    <% } else { %>
+      <p>We don't have any job zone information yet.  Please check again later.</p>
+      <% } %>
+<br>
+
+  </span>
+</div>
+  </li>
+
+  <% if (tasks.length > 0) { %>
+
+  <p><%= job.jobtitle %> may be responsible for the following tasks:
+  <ul>
+    <% tasks.forEach(function(Task) { %>
+      <li>- <%= Task.name %>
+      </li>
+    <% }) %></p>
+  </ul>
+  <% } else { %>
+    <p>We don't currently have any tasks defined for <%= job.jobtitle %>.  Try another job, or check your local education provider.</p>
+  <% } %>
+
+
+<!-- end -->
+
+</div>
+</ul>
+<div class="padded">
+  <div class="halfpad">
+<br>
+<a href="/">Do it again.</a>
+</div>
+</body>
+</html>
