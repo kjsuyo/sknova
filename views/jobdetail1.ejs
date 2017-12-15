@@ -7,24 +7,13 @@
 <div class="padded">
 <h1><%= job.jobtitle %></h1>
 
+<%= JSON.stringify(styles) %>
 
-<u>Job Styles</u>
+<% styles.forEach(function(Style) { %>
+ <%= Style.description %><br>
 
-<p>People in this career typically score highly on:
-
-<% if (styles != null) { %>
-  <% styles.forEach(function(Style) { %>
-    <ul>
-      <% if (Style.JobStyle.value >= 4) { %>
-    <li><p><b><%= Style.name %></b>.  <%= Style.JobStyle.value %></p></li>
-      <% } %>
-</ul>
+hello
 <% }) %>
-
-<% } else { %>
-  <p>We don't have any job style information yet.  Please check again later.</p>
-  <% } %>
-<br>
 
 <% job.Areas.forEach(function(Area) { %>
 

@@ -9,6 +9,8 @@ const Area = require('../models').Area;
 const Zone = require('../models').Zone;
 const Style = require('../models').Style;
 const Value = require('../models').Value;
+const Ability = require('../models').Ability;
+const Knowledge = require('../models').Knowledge;
 const Skill = require('../models').Skill;
 const Interest = require('../models').Interest;
 const JobArea = require('../models').JobArea;
@@ -107,49 +109,142 @@ module.exports = {
 
     tasks = job.getTasks();
 
-    styles = job.getStyles( {
-      through: {
-        model: JobStyle,
-        attributes: ['value']
-      },
+    styles = Style.findAll( {
+      include: [
+        {
+          model: Job,
+          foreignKey: 'jobId',
+          through: {
+            model: JobStyle,
+            joinTableAttributes: ['value'],
+            attributes: ['id']
+          },
+          where: {'id': job.id},
+          required: true
+        },
+
+      ],
+      order: [
+        [ { model: Job}, { model: JobStyle}, 'value', 'DESC' ],
+      ],
+      limit: 5,
     });
 
-    skills = job.getSkills( {
+//    styles = job.getStyles( {
+//      through: {
+//        model: JobStyle
+//      },
+//    order: [
+//       [ {model: JobStyle}, 'value', 'DESC']
+//     ],
+//    });
+
+skills = Skill.findAll( {
+  include: [
+    {
+      model: Job,
+      foreignKey: 'jobId',
       through: {
         model: JobSkill,
-        attributes: ['importance', 'level']
+        joinTableAttributes: ['importance', 'level'],
+        attributes: ['id']
       },
-    });
+      where: {'id': job.id},
+      required: true
+    },
 
-    values = job.getValues( {
+  ],
+  order: [
+    [ { model: Job}, { model: JobSkill}, 'importance', 'DESC' ],
+  ],
+  limit: 4,
+});
+
+values = Value.findAll( {
+  include: [
+    {
+      model: Job,
+      foreignKey: 'jobId',
       through: {
         model: JobValue,
-        attributes: ['value']
+        joinTableAttributes: ['value'],
+        attributes: ['id']
       },
-    });
+      where: {'id': job.id},
+      required: true
+    },
 
-    interests = job.getInterests( {
+  ],
+  order: [
+    [ { model: Job}, { model: JobValue}, 'value', 'DESC' ],
+  ],
+  limit: 3,
+});
+
+interests = Interest.findAll( {
+  include: [
+    {
+      model: Job,
+      foreignKey: 'jobId',
       through: {
         model: JobInterest,
-        attributes: ['value']
+        joinTableAttributes: ['value'],
+        attributes: ['id']
       },
-    });
+      where: {'id': job.id},
+      required: true
+    },
+
+  ],
+  order: [
+    [ { model: Job}, { model: JobInterest}, 'value', 'DESC' ],
+  ],
+  limit: 3,
+});
 
 
-    abilities = job.getAbilities( {
+abilities = Ability.findAll( {
+  include: [
+    {
+      model: Job,
+      foreignKey: 'jobId',
       through: {
         model: JobAbility,
-        attributes: ['importance', 'level']
+        joinTableAttributes: ['importance', 'level'],
+        attributes: ['id']
       },
-    });
+      where: {'id': job.id},
+      required: true
+    },
 
+  ],
+  order: [
+    [ { model: Job}, { model: JobAbility}, 'importance', 'DESC' ],
+  ],
+  limit: 5,
+});
 
-    knowledges = job.getKnowledge( {
+knowledges = Knowledge.findAll( {
+  include: [
+    {
+      model: Job,
+      foreignKey: 'jobId',
       through: {
         model: JobKnowledge,
-        attributes: ['importance', 'level']
+        joinTableAttributes: ['importance', 'level'],
+        attributes: ['id']
       },
-    });
+      where: {'id': job.id},
+      required: true
+    },
+
+  ],
+  order: [
+    [ { model: Job}, { model: JobKnowledge}, 'importance', 'DESC' ],
+  ],
+  limit: 5,
+});
+
 
     Promise.all([job,zone,tasks,styles,skills,values,interests,abilities,knowledges]).then(results => {
       res.render('jobdetail', {

@@ -82,9 +82,9 @@
 
   <% knowledges.forEach(function(Knowledge) { %>
     <ul>
-      <% if (Knowledge.JobKnowledge.importance >= 3.5) { %>
+
     <li><p><b><%= Knowledge.name %></b>.  <%= Knowledge.description %></p></li>
-      <% } %>
+
 </ul>
 <% }) %>
 
@@ -173,9 +173,7 @@
 
       <% styles.forEach(function(Style) { %>
         <ul>
-          <% if (Style.JobStyle.value >= 3.5) { %>
         <li><p><b><%= Style.name %></b>.  <%= Style.description %></p></li>
-          <% } %>
 </ul>
     <% }) %>
 
@@ -190,13 +188,12 @@
 
             <% if (values != null) { %>
 
-      <p>People in this career typically score highly on:
+      <p>People in this career typically care about:
 
         <% values.forEach(function(Value) { %>
           <ul>
-            <% if (Value.JobValue.value >= 3.5) { %>
           <li><p><b><%= Value.name %></b>.  <%= Value.description %></p></li>
-            <% } %>
+
   </ul>
       <% }) %>
 
@@ -227,9 +224,9 @@
 
     <% skills.forEach(function(Skill) { %>
       <ul>
-        <% if (Skill.JobSkill.importance >= 3.5) { %>
+
       <li><p><b><%= Skill.name %></b>.  <%= Skill.description %></p></li>
-        <% } %>
+
 </ul>
   <% }) %>
 
@@ -248,9 +245,9 @@
 
     <% interests.forEach(function(Interest) { %>
       <ul>
-        <% if (Interest.JobInterest.value >= 3.5) { %>
+
       <li><p><b><%= Interest.name %></b>.  <%= Interest.description %></p></li>
-        <% } %>
+
 </ul>
   <% }) %>
 
@@ -269,9 +266,9 @@
 
       <% abilities.forEach(function(Ability) { %>
         <ul>
-          <% if (Ability.JobAbility.importance >= 3.5) { %>
+
         <li><p><b><%= Ability.name %></b>.  <%= Ability.description %></p></li>
-          <% } %>
+
   </ul>
     <% }) %>
 
