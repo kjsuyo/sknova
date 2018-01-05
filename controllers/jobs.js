@@ -115,10 +115,10 @@ module.exports = {
           model: Job,
           foreignKey: 'jobId',
           through: {
-            model: JobStyle,
-            joinTableAttributes: ['value'],
-            attributes: ['id']
+            model: JobStyle
           },
+          joinTableAttributes: ['value'],
+          attributes: ['id'],
           where: {'id': job.id},
           required: true
         },
@@ -130,6 +130,11 @@ module.exports = {
       limit: 5,
     });
 
+//    it would be cleaner to use the commented code [.getStyles()], but this only allows for lazy loading,
+//    which means that the order clause doesn't work for attributes in the custom join table.
+//    Using findAll() on each table allows for eager loading, which enables ordering by attributes in the through{} table.
+//    This appears to be a Sequelize limitation.
+//
 //    styles = job.getStyles( {
 //      through: {
 //        model: JobStyle
@@ -145,10 +150,10 @@ skills = Skill.findAll( {
       model: Job,
       foreignKey: 'jobId',
       through: {
-        model: JobSkill,
-        joinTableAttributes: ['importance', 'level'],
-        attributes: ['id']
+        model: JobSkill
       },
+      joinTableAttributes: ['importance', 'level'],
+      attributes: ['id'],
       where: {'id': job.id},
       required: true
     },
@@ -166,10 +171,10 @@ values = Value.findAll( {
       model: Job,
       foreignKey: 'jobId',
       through: {
-        model: JobValue,
-        joinTableAttributes: ['value'],
-        attributes: ['id']
+        model: JobValue
       },
+      joinTableAttributes: ['value'],
+      attributes: ['id'],
       where: {'id': job.id},
       required: true
     },
@@ -187,10 +192,10 @@ interests = Interest.findAll( {
       model: Job,
       foreignKey: 'jobId',
       through: {
-        model: JobInterest,
-        joinTableAttributes: ['value'],
-        attributes: ['id']
+        model: JobInterest
       },
+      joinTableAttributes: ['value'],
+      attributes: ['id'],
       where: {'id': job.id},
       required: true
     },
@@ -209,10 +214,10 @@ abilities = Ability.findAll( {
       model: Job,
       foreignKey: 'jobId',
       through: {
-        model: JobAbility,
-        joinTableAttributes: ['importance', 'level'],
-        attributes: ['id']
+        model: JobAbility
       },
+      joinTableAttributes: ['importance', 'level'],
+      attributes: ['id'],
       where: {'id': job.id},
       required: true
     },
@@ -230,10 +235,10 @@ knowledges = Knowledge.findAll( {
       model: Job,
       foreignKey: 'jobId',
       through: {
-        model: JobKnowledge,
-        joinTableAttributes: ['importance', 'level'],
-        attributes: ['id']
+        model: JobKnowledge
       },
+      joinTableAttributes: ['importance', 'level'],
+      attributes: ['id'],
       where: {'id': job.id},
       required: true
     },

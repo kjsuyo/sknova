@@ -173,7 +173,13 @@
 
       <% styles.forEach(function(Style) { %>
         <ul>
-        <li><p><b><%= Style.name %></b>.  <%= Style.description %></p></li>
+        <li><p><b>
+
+        <!-- this is how you get the value for each style:
+          <% Style.Jobs.forEach(function(Job) { %><%= Job.JobStyle.value %><% }) %>
+        -->
+
+          <%= Style.name %></b>.  <%= Style.description %></p></li>
 </ul>
     <% }) %>
 
