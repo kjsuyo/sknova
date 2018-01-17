@@ -3,6 +3,32 @@ body {
   font: 14px "Helvetica Neue","Open Sans",sans-serif;
 }
 
+.jobdetail {
+  padding: 0px;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+  align-content: center;
+}
+
+.authortext {
+  clear: both;
+}
+
+.jdpadded {
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+  max-width: 900px;
+  align-self: center;
+}
+
+.jdhalfpad {
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+  font: 14px "Helvetica Neue","Open Sans",sans-serif;
+}
+
 .padded {
   padding-left: 50px;
   padding-right: 50px;
@@ -21,6 +47,11 @@ body {
   width: 100%;
 }
 
+hr {
+  border-color: #6C6C6C;
+  padding-bottom: 0px;
+}
+
 img {
   width: 100%;
   height: auto;
@@ -31,15 +62,53 @@ img.normal {
   height: auto;
 }
 
+.authorimage {
+  float: left;
+  padding-right: 3px;
+}
+
+.jdimageright {
+  float: right;
+  padding: 10px;
+}
+
+.jdimageleft {
+  float: left;
+  padding-right: 25px;
+}
+
+span.date {
+  margin-top: 0em;
+  color: #7C7C7C;
+  clear: both;
+  vertical-align: bottom;
+}
+
+span.authorskill {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0em;
+  color: #34B3EE;
+  clear: both;
+  vertical-align: top;
+}
+
+span.authorterrier {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0em;
+  color: #6C6C6C;
+  clear: both;
+  vertical-align: top;
+}
+
 img.logo {
   padding-top: 10px;
   width: auto;
   height:50px;
 }
 
-body
-
-.center {
+body.center {
   padding: 0px;
   text-align: center;
   align-items: center;
@@ -55,19 +124,30 @@ main {
 }
 
 
-a.footer {
+a.footertext {
   color: #FFFFFF;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 
-a
+.footer {
+  text-align: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
 
-.left {
+.social {
+  text-align: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+a.left {
   color: #000000;
   text-align: left;
-}
-
-h1.center {
-  text-align: center;
 }
 
 p.center {
@@ -79,27 +159,52 @@ p.italic {
   font-style: italic;
 }
 
-h1, h2 {
-  font-weight: 100;
+p.cardtext {
+  margin: auto;
+
 }
 
-h1 {
+h1.standard {
+  font-weight: 100;
   font-size: 35px;
 }
 
-h2 {
+h2.standard {
+  font-weight: 100;
   font-size: 20px;
+}
+
+h3.jobdetail {
+  font-weight: 600;
+  font-size: 18px;
+  color: #4C4C4C;
+}
+
+h1.posttitle {
+  font-weight: 700;
+  font-size: 40px;
 }
 
 ul.list{
     margin-left: 20px;
     display: list-item;
     list-style-type:disc;
+    padding-bottom: 0px;
+}
+
+li.list{
+  list-style-type:disc;
+  padding-bottom: 0px;
+}
+
+a.list{
+  color: #000000;
 }
 
 input[type=submit], input[type=text] {
   margin-left: 10px
 }
+
 nav {
   background-color: #FFFFFF;
   color: #34B3EE;
@@ -230,7 +335,7 @@ footer {
 }
 
 .description,
-i {
+i.category {
   font-size: 10px;
   color: #000000;
   width: 100%;
@@ -288,6 +393,24 @@ i {
   height: 10px;
   width: 100%;
   border-radius: .1em;
+}
+
+.boxdisplay {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  min-width: 160px;
+  max-width: 300px;
+  height: 400px;
+}
+
+.otherjobs {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  min-width: 200px;
 }
 
 .boxdisp {

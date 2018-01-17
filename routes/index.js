@@ -20,7 +20,7 @@ module.exports = (app) => {
   app.get('/ind/:industryId/cat', catController.list);
   app.get('/ind/:industryId/cat/:categoryId', catController.retrieve);
 
-  app.get('/ind/:industryId/cat/:categoryId/job', jobsController.list);
+//  app.get('/ind/:industryId/cat/:categoryId/job', jobsController.list);
   app.get('/ind/:industryId/cat/:categoryId/job/:jobId', jobsController.retrieve);
 
 };

@@ -1,89 +1,153 @@
 <!-- views/jobdetail.ejs -->
 <html>
-<body>
+<body class="jobdetail">
   <div class="parent">
-  <img width="400" height="400" src="/img/mainstreet.jpg">
+<hr>
+
 </div>
-<div class="padded">
-<h1><%= job.jobtitle %></h1>
+<div class="container">
+<div class="">
+<h1 class="posttitle">What Do <%= job.jobtitle %> Do?</h1>
 
-<div class="halfpad">
-  <% job.Areas.forEach(function(Area) { %>
-   <h2>Area: <%= Area.name %></h2>
+<div class="jdhalfpad">
+  <div class="authorimage"><img class="normal" width="30" height="30" src="/img/dog_small.jpg"></div>
+<span class="authorskill">Skill</span><span class="authorterrier">Terrier</span><br>
+<span class="date"><% dt = date.format(new Date(), 'MMMM D, YYYY'); %><%= dt %></span><br>
 
-    <% }) %>
-
-<p class=italic><%= job.description %></p><br>
 </div>
+</br>
+
+</div>
+<div class="jdpadded">
+
+
+  <div class="jdhalfpad">
+
+      <h3 class="jobdetail">Is this a good role for me?</h3>
+
+  <p>You may have read about them on the internet, seen something about them in the news, or heard about them in a conversation.  Maybe a guidance counselor thought you'd be a good fit and recommended you learn more.  You may even have a friend or family member who's one.  But what do they actually do, and how do you get a job like that?  Keep reading to find out.</p>
+  </div>
+
 </div>
 
 
 <% job.Areas.forEach(function(Area) { %>
 
 <div class="center">
-<div class="boxdisp"><h2><%= numeral(Area.JobArea.a_mean).format('$0,0') %></h2><p>Median salary</p></div>
-<div class="boxdisp"><h2><%= job.empl_change_pct %>%</h2><p>Long-term job growth</p></div>
-<br><br><br>
+  <div class="container">
+
+
+<!-- Materialize card for Salary Info -->
+
+<div class="boxdisplay">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-image wages-effect waves-block waves-light">
+          <img src="/img/money.jpg">
+        </div>
+        <div class="card-content">
+
+            <span class="card-title activator grey-text text-darken-4"></span>
+          <span class="card-title"><%= numeral(Area.JobArea.a_mean).format('$0,0') %></span>
+            <% job.Areas.forEach(function(Area) { %>
+             <%= Area.name %> median salary for this occupation.
+              <% }) %>
+                <% if (Area.JobArea.a_mean > 65240) { %>Wow!  That's in the top quarter of jobs in the United States.  Check the educational details below to see how you can qualify.
+                <% } else if (Area.JobArea.a_mean > 37610) { %>That's in the top half of jobs in the United States.  Pretty good!<br><br>
+                <% } else { %>That's lower than half of the jobs in the United States.  That's not bad, but if you want to apply to a job like this, think about using it as a way to get experience rather than a long-term career option.
+                <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Materialize card for Job Growth Info -->
+
+<div class="boxdisplay">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-image wages-effect waves-block waves-light">
+          <img src="/img/clipboard.jpg">
+        </div>
+        <div class="card-content">
+
+            <span class="card-title activator grey-text text-darken-4"></span>
+          <span class="card-title"><%= job.empl_change_pct %>%</span>
+            The expected growth in the number of jobs in this field nationwide by 2026.
+                <% if (Area.JobArea.a_mean > 8) { %>That's a lot of openings.  Keep reading to see how you might qualify for one.
+                <% } else if (Area.JobArea.a_mean > 4) { %>Looks like a safe bet -- solid growth and solid potential.
+                <% } else if (Area.JobArea.a_mean > 0) { %>Not too much growth here.  That's not necessarily a bad thing, but make sure you think about back-up plans.
+                <% } else { %>This job won't immediately disappear, but in the next few years, there will be less demand.  Think carefully about back-up plans before pursuing this role.
+                <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
     <% }) %>
+</div>
 
-<div class="padded">
+</div>
 
-<ul class="collapsible" data-collapsible="expandable">
 
-  <!-- Tasks -->
+<div class="jdpadded">
 
-  <li>
-    <div class="collapsible-header active teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Tasks</div>
-    <div class="collapsible-body teal lighten-5"><span>
-      <% if (tasks.length > 0) { %>
+  <div class="jdhalfpad">
 
-      <p><%= job.jobtitle %> may be responsible for the following tasks:
-      <ul>
-        <% tasks.forEach(function(Task) { %>
-          <li>- <%= Task.name %>
-          </li>
-        <% }) %></p>
+
+      <!-- Description and Tasks -->
+
+
+      <h3 class="jobdetail">What do <%= changeCase.lowerCase(job.jobtitle) %> do?</h3>
+  <p><%= changeCase.upperCaseFirst(changeCase.lowerCase(job.jobtitle)) %> <%= changeCase.lowerCaseFirst(job.description) %><br><br>
+
+
+  <% if (tasks.length > 0) { %>
+
+In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expected to:
+
+    <% tasks.forEach(function(Task) { %>
+      <ul class="list">
+          <li class="list"><%= Task.name %></li>
       </ul>
-      <% } else { %>
-        <p>We don't currently have any tasks defined for <%= job.jobtitle %>.  Try another job, or check your local education provider.</p>
-      <% } %>
-    </span></div>
-  </li>
+    <% }) %></p>
 
-  <!-- Education, Degrees, Knowledge -->
+    <p class="italic">Does this sound like a job that you might be interested in?  Keep reading to learn what personality types are best suited for a role like this,
+      what educational opportunities you can take advantage of to best position yourself for success, and where to apply for specific jobs in your area.</p>
 
-  <li>
-    <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Education</div>
-    <div class="collapsible-body teal lighten-5"><span>
+  <% } else { %>
+    <p>Does this sound like a role you might be interested in?  Keep reading to find out who might do well in this job.</p>
+  <% } %>
 
-<!-- education -->
+  <!-- Education, Knowledge -->
 
 
-      <u>Degrees and Education</u>
-<ul>
-<li><p>- <%= zone.education %></p></li>
-</ul>
-<br>
-
-<!-- Degrees -->
+  <h3 class="jobdetail">What kind of education do <%= changeCase.lowerCase(job.jobtitle) %> typically have?</h3>
 
 
+    <div class="jdimageright">
+  <img src="/img/college.jpg">
+    </div>
 
-<!-- Knowledge -->
+<!-- Education - from basic DoL job description data, not the more complex version (yet) -->
 
-<u>Key Knowledge Areas</u>
+<%= zone.education %>
+
+<!-- Knowledges -->
 
 <% if (knowledges != null) { %>
 
 <p>People in this career typically have strong backgrounds in:
 
   <% knowledges.forEach(function(Knowledge) { %>
-    <ul>
+    <ul class="list">
 
-    <li><p><b><%= Knowledge.name %></b>.  <%= Knowledge.description %></p></li>
+    <li class="list"><p><b><%= Knowledge.name %></b>.  This is a <%= changeCase.lowerCaseFirst(Knowledge.description) %></p></li>
 
 </ul>
 <% }) %>
@@ -91,212 +155,228 @@
 <% } else { %>
   <p>We don't have any job knowledge information yet.  Please check again later.</p>
   <% } %>
-<br>
 
-<!-- end -->
+    <!-- Skills, Interests, Abilities -->
 
-</span>
-</div>
 
-  </li>
+    <h3 class="jobdetail">What skills, interests, and abilities do <%= changeCase.lowerCase(job.jobtitle) %> need to have?</h3>
 
-<!-- Job boards -->
 
-  <li>
-    <div class="collapsible-header active teal lighten-3"><i class="material-icons">add</i>Jobs in Your Area</div>
-    <div class="collapsible-body teal lighten-5"><span>Looking for a career in this field?  Check your local job board site.</span></div>
-  </li>
+      <!-- Job Skills -->
 
-<!-- Career Changers and Starters -->
+        <% if (skills != null) { %>
 
-<li>
-<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Related Careers</div>
-<div class="collapsible-body teal lighten-5"><span>
+          <p>Most occupations require workers to be proficient in certain areas.  Some might require strong writing abilities, for example, while others might require people to be great listeners.
+            People in this career typically score highly on:
 
-  <u>Jobs for Job Changers</u>
-  <p>Looking to change careers?  Here are some jobs that are similar to this one.</p>
+        <% skills.forEach(function(Skill) { %>
+          <ul class="list">
 
-<ul>
-  <% job.jobchangers.forEach(function(Jobchanger) { %>
+          <li class="list"><p><b><%= Skill.name %></b>.  <%= Skill.description %></p></li>
 
-    <li>- <a href="../../<%= Jobchanger.categoryId %>/job/<%= Jobchanger.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
-      <%= Jobchanger.jobtitle %></a>
-    </li>
-  <% }) %></p>
-</ul>
-
-<p><u>Jobs to Get Started</u></p>
-<p>Looking to get started in this career?  Here are some jobs that will give you valuable experience on the way.</p>
-
-<ul>
-  <% job.jobstarters.forEach(function(Jobstarter) { %>
-
-    <li>- <a href="../../<%= Jobstarter.categoryId %>/job/<%= Jobstarter.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">
-      <%= Jobstarter.jobtitle %></a>
-    </li>
-  <% }) %></p>
-</ul>
-</span>
-</div>
-</li>
-
-<!-- Environment -->
-
-    <li>
-    <div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Job Environment, Styles, and Values</div>
-    <div class="collapsible-body teal lighten-5"><span>
-
-    <!-- Job Zone -->
-
-    <u>Job Zone</u>
-
-    <% if (zone != null) { %>
-
-    <p><%= zone.name %>.</p>
-    <ul>
-      <li><p>- <%= zone.experience %></p></li>
-      <li><p>- <%= zone.training %></p></li>
-      <li><p>- <%= zone.examples %></p></li>
     </ul>
+      <% }) %>
 
-    <% } else { %>
-      <p>We don't have any job zone information yet.  Please check again later.</p>
-      <% } %>
-<br>
-    <!-- Job Styles -->
+      <% } else { %>
+        <p></p>
+        <% } %>
 
-    <u>Job Styles</u>
+      <!-- Job Interests -->
 
-        <% if (styles != null) { %>
+        <% if (interests != null) { %>
 
-    <p>People in this career typically score highly on:
+      <p>Different careers require people who enjoy different ways of approaching problems.  For example, some occupations are best for people who like to work with their hands, while others are better for people who enjoy spending time thinking creatively about abstract concepts.
+        People in this career are typically:
 
-      <% styles.forEach(function(Style) { %>
-        <ul>
-        <li><p><b>
+        <% interests.forEach(function(Interest) { %>
+          <ul class="list">
 
-        <!-- this is how you get the value for each style:
-          <% Style.Jobs.forEach(function(Job) { %><%= Job.JobStyle.value %><% }) %>
-        -->
+          <li class="list"><p><b><%= Interest.name %></b>.  <%= Interest.description %></p></li>
 
-          <%= Style.name %></b>.  <%= Style.description %></p></li>
-</ul>
-    <% }) %>
+    </ul>
+      <% }) %>
 
-    <% } else { %>
-      <p>We don't have any job style information yet.  Please check again later.</p>
-      <% } %>
-<br>
+      <% } else { %>
+        <p></p>
+        <% } %>
 
-      <!-- Job Values -->
+        <!-- Job Abilities -->
 
-      <u>Job Values</u>
+            <% if (abilities != null) { %>
 
-            <% if (values != null) { %>
+              <p>Most occupations require workers to be good at certain things.  Unlike skills, which are often related to performance on a specific task, abilities are the enduring attributes that influence a worker's overall performance on the job.
+                People in this career are typically very good at:
 
-      <p>People in this career typically care about:
+          <% abilities.forEach(function(Ability) { %>
+            <ul class="list">
 
-        <% values.forEach(function(Value) { %>
-          <ul>
-          <li><p><b><%= Value.name %></b>.  <%= Value.description %></p></li>
+            <li class="list"><p><b><%= Ability.name %></b>.  <%= Ability.description %></p></li>
 
+      </ul>
+        <% }) %>
+
+        <% } else { %>
+          <p></p>
+          <% } %>
+
+      <!-- Zone, Style, Values -->
+
+      <h3 class="jobdetail">What is the typical working environment for <%= changeCase.lowerCase(job.jobtitle) %>?</h3>
+
+      <!-- Job Zone -->
+
+      <% if (zone != null) { %>
+
+      <p>The working environment for this career is classified as "<%= zone.name %>".  Jobs with such an environment typically have a few things in common.  For example: </p>
+      <ul class="list">
+        <li><%= zone.experience %></li></ul>
+        <ul class="list">
+        <li><%= zone.training %></li></ul>
+        <ul class="list">
+        <li><%= zone.examples %></li>
+      </ul>
+
+      <% } else { %>
+        <p></p>
+        <% } %>
+
+      <!-- Job Styles -->
+
+    <div class="jdimageleft">
+      <img src="/img/laptops.jpg">
+    </div>
+
+          <% if (styles != null) { %>
+
+      <p><%= changeCase.upperCaseFirst(changeCase.lowerCase(job.jobtitle)) %> aren't all the same, but they often share similar personal styles or ways of working.  The most effective people in this career typically enjoy working in roles that require:
+
+        <% styles.forEach(function(Style) { %>
+          <ul class="list">
+          <li class="list"><p><b>
+
+          <!-- this is how you get the value for each style:
+            <% Style.Jobs.forEach(function(Job) { %><%= Job.JobStyle.value %><% }) %>
+          -->
+
+            <%= Style.name %></b>.  This means that the <%= changeCase.lowerCaseFirst(Style.description) %></p></li>
   </ul>
       <% }) %>
 
       <% } else { %>
-        <p>We don't have any job values information yet.  Please check again later.</p>
+        <p></p>
         <% } %>
-  <br>
 
-    <!-- end section -->
+        <!-- Job Values -->
 
-    </span>
+              <% if (values != null) { %>
+
+        <p>Lastly, <%= changeCase.lowerCase(job.jobtitle) %> often share similar values in the workplace.  In particular, they typically care about:
+
+          <% values.forEach(function(Value) { %>
+            <ul class="list">
+            <li class="list"><p><b><%= Value.name %></b>.  <%= Value.description %></p></li>
+
+    </ul>
+        <% }) %>
+
+        <% } else { %>
+          <p></p>
+          <% } %>
+
+
+                <!-- Career Changers and Starters -->
+
+
+                <!-- Changer Cards -->
+
+      <h3 class="jobdetail">What other careers might I be interested in?</h3>
+
+      <p>Are you looking to change careers from this one, or to explore other careers that might be similar?  Here are some jobs that share many of the same characteristics as this one.</p>
+
+
+      <div class="container">
+      <% job.jobchangers.forEach(function(Jobchanger) { %>
+
+        <div class="otherjobs">
+        <div class="col s12 m2">
+          <div class="card horizontal">
+            <div class="card-image" style="width:80px;height:auto;background-color: #6C6C6C">
+              <img src="/img/gradient.png" style="width:80px;height:auto">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                    <span class="card-title"><%= Jobchanger.jobtitle %></span>
+
+                          <% job.Areas.forEach(function(Area) { %>
+
+                                    <p>Annual Salary in <%= Area.name %>: <%= numeral(Area.JobArea.a_mean).format('$0,0') %></p><br>
+
+                                    <% }) %>
+
+                                    <p><i><%= Jobchanger.description %></p></i>
+              </div>
+              <div class="card-action">
+                <a href="#">Explore this job</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% }) %></p><br>
+    </div>
+
+      <!-- Starter Cards -->
+
+    <p>Are you interested in having this job later in your career, but wondering what kind of job is a good way to get started right now?  Here are some jobs that will give you valuable experience on the way.</p>
+
+
+      <div class="container">
+
+      <% job.jobstarters.forEach(function(Jobstarter) { %>
+
+        <div class="otherjobs">
+        <div class="col s12 m7">
+          <div class="card horizontal">
+            <div class="card-image" style="width:80px;height:auto;background-color: #6C6C6C">
+              <img src="/img/gradient.png" style="width:80px;height:auto">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                    <span class="card-title"><%= Jobstarter.jobtitle %></span>
+
+                          <% job.Areas.forEach(function(Area) { %>
+
+                                    <p>Annual Salary in <%= Area.name %>: <%= numeral(Area.JobArea.a_mean).format('$0,0') %></p><br>
+
+                                    <% }) %>
+
+                                    <p><i><%= Jobstarter.description %></p></i>
+              </div>
+              <div class="card-action">
+                <a href="#">Explore this job</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% }) %></p>
+
   </div>
-    </li>
 
-<!-- Skills, Interests, Abilities -->
-
-<li>
-<div class="collapsible-header teal lighten-3" color="#4db6ac"><i class="material-icons">add</i>Skills, Interests, and Abilities</div>
-<div class="collapsible-body teal lighten-5"><span>
-
-  <!-- Job Skills -->
-
-  <u>Job Skills</u>
-
-    <% if (skills != null) { %>
-
-  <p>People in this career typically score highly on:
-
-    <% skills.forEach(function(Skill) { %>
-      <ul>
-
-      <li><p><b><%= Skill.name %></b>.  <%= Skill.description %></p></li>
-
-</ul>
-  <% }) %>
-
-  <% } else { %>
-    <p>We don't have any job skill information yet.  Please check again later.</p>
-    <% } %>
-<br>
-
-  <!-- Job Interests -->
-
-  <u>Job Interests</u>
-
-    <% if (interests != null) { %>
-
-  <p>People in this career are typically:
-
-    <% interests.forEach(function(Interest) { %>
-      <ul>
-
-      <li><p><b><%= Interest.name %></b>.  <%= Interest.description %></p></li>
-
-</ul>
-  <% }) %>
-
-  <% } else { %>
-    <p>We don't have any job interest information yet.  Please check again later.</p>
-    <% } %>
-<br>
-
-    <!-- Job Abilities -->
-
-    <u>Job Abilities</u>
-
-        <% if (abilities != null) { %>
-
-    <p>People in this career typically have strong:
-
-      <% abilities.forEach(function(Ability) { %>
-        <ul>
-
-        <li><p><b><%= Ability.name %></b>.  <%= Ability.description %></p></li>
-
-  </ul>
-    <% }) %>
-
-    <% } else { %>
-      <p>We don't have any job ability information yet.  Please check again later.</p>
-      <% } %>
-  <br>
-
-  <!-- end section -->
-
-  </span>
-</div>
-  </li>
 
 <!-- end -->
 
 </div>
 </ul>
-<div class="padded">
-  <div class="halfpad">
+<div class="jdpadded">
+  <div class="jdhalfpad">
 <br>
-<a href="/">Do it again.</a>
+<div class="center">
+<a class="waves-effect waves-light btn" href="/">Do it again.</a>
+</div>
+</div>
 </div>
 </body>
 </html>

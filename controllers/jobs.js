@@ -2,6 +2,9 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 var numeral = require('numeral');
+var date = require('date-and-time');
+var pluralize = require('pluralize');
+var changeCase = require('change-case');
 
 const Job = require('../models').Job;
 const Task = require('../models').Task;
@@ -80,7 +83,7 @@ module.exports = {
         {
         model: Job,
         as: 'jobchangers',
-        attributes: ['id', 'jobtitle'],
+        attributes: ['id', 'jobtitle', 'description'],
         through: {
           model: JobChanger,
           attributes: []
@@ -92,7 +95,7 @@ module.exports = {
         {
         model: Job,
         as: 'jobstarters',
-        attributes: ['id', 'jobtitle'],
+        attributes: ['id', 'jobtitle', 'description'],
         through: {
           model: JobStarter,
           attributes: []
@@ -107,7 +110,9 @@ module.exports = {
 
     zone = job.getZone();
 
-    tasks = job.getTasks();
+    tasks = job.getTasks(
+      {limit: 10}
+    );
 
     styles = Style.findAll( {
       include: [
@@ -250,7 +255,6 @@ knowledges = Knowledge.findAll( {
   limit: 5,
 });
 
-
     Promise.all([job,zone,tasks,styles,skills,values,interests,abilities,knowledges]).then(results => {
       res.render('jobdetail', {
         title: 'Job Detail Page',
@@ -263,7 +267,10 @@ knowledges = Knowledge.findAll( {
         interests: results[6],
         abilities: results[7],
         knowledges: results[8],
-        numeral:numeral
+        numeral:numeral,
+        date: date,
+        pluralize: pluralize,
+        changeCase: changeCase
       });
     });
   });
