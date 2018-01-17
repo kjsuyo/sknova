@@ -83,7 +83,7 @@ module.exports = {
         {
         model: Job,
         as: 'jobchangers',
-        attributes: ['id', 'jobtitle', 'description'],
+        attributes: ['id', 'jobtitle', 'description', 'categoryId'],
         through: {
           model: JobChanger,
           attributes: []
