@@ -316,7 +316,7 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
                                     <p><i><%= Jobchanger.description %></p></i>
               </div>
               <div class="card-action">
-                <a href="#">Explore this job</a>
+                <a href="../../<%= Jobchanger.categoryId %>/job/<%= Jobchanger.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">Explore this job</a>
               </div>
             </div>
           </div>
@@ -354,7 +354,7 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
                                     <p><i><%= Jobstarter.description %></p></i>
               </div>
               <div class="card-action">
-                <a href="#">Explore this job</a>
+                <a href="../../<%= Jobstarter.categoryId %>/job/<%= Jobstarter.id %>?area=<% job.Areas.forEach(function(Area) { %><%=Area.code%><% }) %>">Explore this job</a>
               </div>
             </div>
           </div>
