@@ -77,8 +77,8 @@
             <span class="card-title activator grey-text text-darken-4"></span>
           <span class="card-title"><%= job.empl_change_pct %>%</span>
             The expected growth in the number of jobs in this field nationwide by 2026.
-                <% if (Area.JobArea.a_mean > 8) { %>That's a lot of openings.  Keep reading to see how you might qualify for one.
-                <% } else if (Area.JobArea.a_mean > 4) { %>Looks like a safe bet -- solid growth and solid potential.
+                <% if (Area.JobArea.a_mean > 8) { %>That's a lot of openings.  Keep reading to see how you might qualify for one.<br><br>
+                <% } else if (Area.JobArea.a_mean > 4) { %>Looks like a safe bet -- solid growth and solid potential.<br><br>
                 <% } else if (Area.JobArea.a_mean > 0) { %>Not too much growth here.  That's not necessarily a bad thing, but make sure you think about back-up plans.
                 <% } else { %>This job won't immediately disappear, but in the next few years, there will be less demand.  Think carefully about back-up plans before pursuing this role.
                 <% } %>
@@ -135,8 +135,9 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
     </div>
 
 <!-- Education - from basic DoL job description data, not the more complex version (yet) -->
-
+<% if (zone != null) { %>
 <%= zone.education %>
+<% } %>
 
 <!-- Knowledges -->
 
