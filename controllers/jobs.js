@@ -90,23 +90,25 @@ module.exports = {
         },
         foreignKey: 'jobId',
         otherKey: 'jobchangerId',
-        required: true
+        required: false
       },
         {
         model: Job,
         as: 'jobstarters',
-        attributes: ['id', 'jobtitle', 'description'],
+        attributes: ['id', 'jobtitle', 'description', 'categoryId'],
         through: {
           model: JobStarter,
           attributes: []
         },
         foreignKey: 'jobId',
         otherKey: 'jobstarterId',
-        required: true
+        required: false
       }
       ],
     }
     ).then(job => {
+
+//      if(job != null) {
 
     zone = job.getZone();
 
@@ -254,6 +256,8 @@ knowledges = Knowledge.findAll( {
   ],
   limit: 5,
 });
+
+//};
 
     Promise.all([job,zone,tasks,styles,skills,values,interests,abilities,knowledges]).then(results => {
       res.render('jobdetail', {

@@ -292,8 +292,8 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
 
       <h3 class="jobdetail">What other careers might I be interested in?</h3>
 
+      <% if(job.jobchangers != 0) { %>
       <p>Are you looking to change careers from this one, or to explore other careers that might be similar?  Here are some jobs that share many of the same characteristics as this one.</p>
-
 
       <div class="container">
       <% job.jobchangers.forEach(function(Jobchanger) { %>
@@ -325,15 +325,18 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
       </div>
 
       <% }) %></p><br>
+      <% } %>
     </div>
 
       <!-- Starter Cards -->
+
+
+      <% if(job.jobstarters != 0) { %>
 
     <p>Are you interested in having this job later in your career, but wondering what kind of job is a good way to get started right now?  Here are some jobs that will give you valuable experience on the way.</p>
 
 
       <div class="container">
-
       <% job.jobstarters.forEach(function(Jobstarter) { %>
 
         <div class="otherjobs">
@@ -363,19 +366,21 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
       </div>
 
       <% }) %></p>
+      <% } else { %>
+        <p>Use the SkillTerrier tool to help find out what other jobs might be interesting for you.</p>
+        <% } %>
 
   </div>
 
 
 <!-- end -->
 
-</div>
-</ul>
 <div class="jdpadded">
   <div class="jdhalfpad">
 <br>
 <div class="center">
 <a class="waves-effect waves-light btn" href="/">Do it again.</a>
+</div>
 </div>
 </div>
 </div>
