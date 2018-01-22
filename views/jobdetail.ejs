@@ -3,30 +3,44 @@
 <body class="jobdetail">
   <div class="parent">
 <hr>
+<div class="row">
+  <div class="col hide-on-small-only m3 l2" style="position:sticky;top:0">
+    <img src="/img/logo.jpg" style="width:100px;height:auto;padding-top:10px">
+    <ul class="section table-of-contents">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#tasks">Tasks</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills and Abilities</a></li>
+      <li><a href="#environment">Work Environment</a></li>
+      <li><a href="#careers">Other Careers</a></li>
+    </ul>
+  </div>
 
-</div>
-<div class="container">
-<div class="">
+<div class="col m9 l10">
+
+         <div id="home" class="section scrollspy">
+         <div class="jdpadded">
 <h1 class="posttitle">What Do <%= job.jobtitle %> Do?</h1>
+</div>
 
-<div class="jdhalfpad">
   <div class="authorimage"><img class="normal" width="30" height="30" src="/img/dog_small.jpg"></div>
 <span class="authorskill">Skill</span><span class="authorterrier">Terrier</span><br>
 <span class="date"><% dt = date.format(new Date(), 'MMMM D, YYYY'); %><%= dt %></span><br>
 
-</div>
 </br>
-
-</div>
 <div class="jdpadded">
 
 
   <div class="jdhalfpad">
 
+
+
       <h3 class="jobdetail">Is this a good role for me?</h3>
 
   <p>You may have read about them on the internet, seen something about them in the news, or heard about them in a conversation.  Maybe a guidance counselor thought you'd be a good fit and recommended you learn more.  You may even have a friend or family member who's one.  But what do they actually do, and how do you get a job like that?  Keep reading to find out.</p>
   </div>
+
+</div>
 
 </div>
 
@@ -102,6 +116,7 @@
 
       <!-- Description and Tasks -->
 
+               <div id="tasks" class="section scrollspy">
 
       <h3 class="jobdetail">What do <%= changeCase.lowerCase(job.jobtitle) %> do?</h3>
   <p><%= changeCase.upperCaseFirst(changeCase.lowerCase(job.jobtitle)) %> <%= changeCase.lowerCaseFirst(job.description) %><br><br>
@@ -123,9 +138,11 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
   <% } else { %>
     <p>Does this sound like a role you might be interested in?  Keep reading to find out who might do well in this job.</p>
   <% } %>
+</div>
 
   <!-- Education, Knowledge -->
 
+           <div id="education" class="section scrollspy">
 
   <h3 class="jobdetail">What kind of education do <%= changeCase.lowerCase(job.jobtitle) %> typically have?</h3>
 
@@ -157,8 +174,11 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
   <p>We don't have any job knowledge information yet.  Please check again later.</p>
   <% } %>
 
+</div>
+
     <!-- Skills, Interests, Abilities -->
 
+             <div id="skills" class="section scrollspy">
 
     <h3 class="jobdetail">What skills, interests, and abilities do <%= changeCase.lowerCase(job.jobtitle) %> need to have?</h3>
 
@@ -220,7 +240,11 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
           <p></p>
           <% } %>
 
+        </div>
+
       <!-- Zone, Style, Values -->
+
+               <div id="environment" class="section scrollspy">
 
       <h3 class="jobdetail">What is the typical working environment for <%= changeCase.lowerCase(job.jobtitle) %>?</h3>
 
@@ -283,11 +307,11 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
         <% } else { %>
           <p></p>
           <% } %>
-
+</div>
 
                 <!-- Career Changers and Starters -->
 
-
+                         <div id="careers" class="section scrollspy">
                 <!-- Changer Cards -->
 
       <h3 class="jobdetail">What other careers might I be interested in?</h3>
@@ -299,7 +323,7 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
       <% job.jobchangers.forEach(function(Jobchanger) { %>
 
         <div class="otherjobs">
-        <div class="col s12 m2">
+        <div class="col s12 m12 l12">
           <div class="card horizontal">
             <div class="card-image" style="width:80px;height:auto;background-color: #6C6C6C">
               <img src="/img/gradient.png" style="width:80px;height:auto">
@@ -340,7 +364,7 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
       <% job.jobstarters.forEach(function(Jobstarter) { %>
 
         <div class="otherjobs">
-        <div class="col s12 m7">
+        <div class="col s12 m12 l12">
           <div class="card horizontal">
             <div class="card-image" style="width:80px;height:auto;background-color: #6C6C6C">
               <img src="/img/gradient.png" style="width:80px;height:auto">
@@ -372,6 +396,8 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
 
   </div>
 
+</div>
+
 
 <!-- end -->
 
@@ -380,6 +406,11 @@ In a typical work day, <%= changeCase.lowerCase(job.jobtitle) %> might be expect
 <br>
 <div class="center">
 <a class="waves-effect waves-light btn" href="/">Do it again.</a>
+
+ </div>
+</div>
+</div>
+
 </div>
 </div>
 </div>
