@@ -2,7 +2,7 @@
 
 A Javascript (Node.js) application with a PostgreSQL database and EJS client application, bundled with npm for hosting on Heroku.
 
-All of this SHOULD work to replicate the app on your local computer, but I'm not quite sure as I haven't actually tried to recreate it on another machine - if you get hung up with anything please let me know and we can troubleshoot.
+If you get hung up on any of the steps below please let me know and we can troubleshoot.
 
 ## Getting Started
 
@@ -14,15 +14,17 @@ Install the Heroku CLI.
 
 ### Sequelize, PostgreSQL, and the Production Database
 
-SkillTerrier uses the Sequelize ORM for PostgreSQL database management.  You will need to install the Sequelize CLI in addition to the Sequelize NPM dependency.  
+SkillTerrier uses the Sequelize ORM for PostgreSQL database management.  You will need to install the Sequelize CLI in addition to the Sequelize NPM dependency: `npm install -g sequelize-cli` and `npm install --save sequelize pg pg-hstore`.  
 
 You will also need to install PostgreSQL (https://www.postgresql.org).  SkillTerrier runs on unmodified PostgreSQL 9.6.  It may also be helpful to install the PostgreSQL CLI (psql) as well as the desktop application, PGAdmin (the most recent version is PGAdmin 4 v2).
 
-In the file config/config.json, you will need to change the development database password to whatever is your password for the user postgres on your local PostgreSQL.  Of course, you can also just set your password to be Database1! .
+You will need to initialize Sequelize by running `sequelize init`.  Note that this will probably overwrite several files in the directory, including the config/config.json; it may help just to pull the code from the Git repository again.  
 
-Create the database using the Sequelize CLI using the command `sequelize db:migrate`.  In PGAdmin, you should be able to see all of the tables in your new database (database_production), but they should be empty if you query them.  Let's fix that now.  
+In the file config/config.json, you will need to change the development database password to whatever is your password for the user postgres on your local PostgreSQL.  Of course, you can also just set your password to be `Database1!`.
 
-Grab the current production database (the most recently uploaded .dump file) at the public Amazon S3 bucket, https://s3.amazonaws.com/skillterrier/. Then use the Restore function on database_production in PGAdmin to restore the database from that file.
+Create the database using the Sequelize CLI using the command `sequelize db:create database_production`.  Then, turn the tables up with the command `sequelize db:migrate`.  In PGAdmin, you should be able to see all of the tables in your new database (database_production), but they should be empty if you query them.  Let's fix that now.  
+
+First, in PGAdmin, drop all of the (empty) tables from the database using the SQL query `DROP TABLE public."Abilities" CASCADE;` (repeat for each of the tables after the Abilities table).  Then grab the current production database (the most recently uploaded .dump file) at the public Amazon S3 bucket, https://s3.amazonaws.com/skillterrier/.  Finally, use the Restore function on database_production (right click on the database and click 'Restore') in PGAdmin to restore the database from that file.
 
 At this point, you can test whether it has been set up correctly -- you should see it in your list of available databases in PGAdmin, and you should be able to run queries through the query tool (e.g., `SELECT * FROM public."Categories";`), and those queries should return data.  Note that Sequelize is caps-sensitive but PostgreSQL is not -- you will need to use double quotes "" around capitalized words when querying in PGAdmin.
 
