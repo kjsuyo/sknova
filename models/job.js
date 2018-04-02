@@ -85,6 +85,16 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'jobId',
       foreignKeyConstraint: true
     });
+    Job.belongsToMany(models.Context, {
+      through: 'JobContext',
+      foreignKey: 'jobId',
+      foreignKeyConstraint: true
+    });
+    Job.belongsToMany(models.Activity, {
+      through: 'JobActivity',
+      foreignKey: 'jobId',
+      foreignKeyConstraint: true
+    });
 };
   return Job;
 };

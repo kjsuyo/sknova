@@ -6,7 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var numeral = require('numeral');
 var routes = require('./routes/index');
-
+var lodash = require('lodash');
+var assert = require('assert');
+var objectValues = require('object-values');
+var pg = require('pg');
+require('pg-parse-float')(pg);
 
 var app = express();
 var expressLayouts = require('express-ejs-layouts');

@@ -3,6 +3,7 @@ var express = require('express');
 var router  = express.Router();
 
 const areasController = require('../controllers').areas;
+const algoController = require('../controllers/algorithm');
 const indController = require('../controllers').industries;
 const catController = require('../controllers').categories;
 const jobsController = require('../controllers').jobs;
@@ -22,5 +23,7 @@ module.exports = (app) => {
 
 //  app.get('/ind/:industryId/cat/:categoryId/job', jobsController.list);
   app.get('/ind/:industryId/cat/:categoryId/job/:jobId', jobsController.retrieve);
+
+  app.get('/algorithm', algoController.run);
 
 };
