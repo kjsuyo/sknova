@@ -24,6 +24,8 @@ module.exports = (app) => {
 //  app.get('/ind/:industryId/cat/:categoryId/job', jobsController.list);
   app.get('/ind/:industryId/cat/:categoryId/job/:jobId', jobsController.retrieve);
 
+  app.get('/quiz', (req, res) => res.render('quiz'));
+
   app.get('/algorithm', algoController.run);
 
 };
