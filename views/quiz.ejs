@@ -12,196 +12,198 @@
 </head>
 <body>
     <style>
-        body html {
-            height: 100%;
-        }
+    body html {
+    	height: 100%;
+    }
+    footer {
+    	display: none;
+    }
+    /* nav shadow */
 
-        footer {
-            display: none;
-        }
-
-        /* nav shadow */
-
-        .sv_main .sv_body {
-            border-top: transparent;
-            box-shadow: inset 0px 4px 3px -3px rgba(50, 50, 50, 0.75);
-        }
+    .sv_main .sv_body {
+    	border-top: transparent;
+    	box-shadow: inset 0px 4px 3px -3px rgba(50, 50, 50, 0.75);
+    }
     </style>
     <div id="surveyContainer"></div>
     <script>
-        var surveyJSON = {
-            focusFirstQuestionAutomatic: false,
-            pages: [{
-                name: "Select region of interest",
-                elements: [{
-                    type: "dropdown",
-                    name: "question1",
-                    title: "Where would you like to live and work?",
-                    defaultValue: "item1",
-                    choices: [{
-                        value: "item1",
-                        text: "choose"
-                    }, "item2", "item3"]
-                }, {
-                    type: "multipletext",
-                    name: "question2",
-                    visible: false,
-                    visibleIf: "{question1} != 'item1'",
-                    title: "Enter up to 5 cities",
-                    isRequired: true,
-                    items: [{
-                        name: "city1",
-                        isRequired: true,
-                        title: "1."
-                    }, {
-                        name: "city2",
-                        title: "2."
-                    }, {
-                        name: "city3",
-                        title: "3."
-                    }, {
-                        name: "city4",
-                        title: "4."
-                    }, {
-                        name: "city4",
-                        title: "5."
-                    }]
-                }],
-                questionTitleLocation: "top",
-                title: "Where would you like to live and work?",
-                navigationButtonsVisibility: "show"
-            }, {
-                name: "Background questions",
-                elements: [{
-                    type: "text",
-                    name: "question3",
-                    title: "What is your age?"
-                }, {
-                    type: "rating",
-                    name: "question4",
-                    title: "What is the minimum salary you are looking for?"
-                }, {
-                    type: "dropdown",
-                    name: "question5",
-                    title: "What is your level of education?",
-                    choices: ["item1", "item2", "item3"]
-                }],
-                title: "About you",
-                questionsOrder: "initial"
-            }, {
-                name: "Rate these activities",
-                elements: [{
-                    type: "rating",
-                    name: "question6",
-                    title: "Woodworking"
-                }, {
-                    type: "rating",
-                    name: "question7",
-                    title: "Painting"
-                }, {
-                    type: "rating",
-                    name: "question8",
-                    title: "Writing Poems"
-                }],
-                title: "How much do you enjoy the following activities?"
-            }, {
-                name: "Rate level of experience",
-                elements: [{
-                    type: "rating",
-                    name: "question9",
-                    title: "Collaboration",
-                    rateValues: [{
-                        value: 1,
-                        text: "Yes"
-                    }, {
-                        value: 2,
-                        text: "No"
-                    }]
-                }, {
-                    type: "rating",
-                    name: "question10",
-                    visibleIf: "{question9} = 1",
-                    title: "Confidence"
-                }, {
-                    type: "rating",
-                    name: "question11",
-                    title: "Shipbuilding",
-                    rateValues: [{
-                        value: 1,
-                        text: "Yes"
-                    }, {
-                        value: 2,
-                        text: "No"
-                    }]
-                }, {
-                    type: "rating",
-                    name: "question12",
-                    visibleIf: "{question11} = 1",
-                    title: "Confidence"
-                }],
-                title: "Do you have experience with the following activities?"
-            }, {
-                name: "Choose relevant skills",
-                elements: [{
-                    type: "rating",
-                    name: "question13",
-                    title: "Communication",
-                    rateValues: [{
-                        value: 1,
-                        text: "Listening"
-                    }, {
-                        value: 2,
-                        text: "Respect"
-                    }, {
-                        value: 3,
-                        text: "Speaking"
-                    }, {
-                        value: 4,
-                        text: "Writing"
-                    }, {
-                        value: 5,
-                        text: "Collaboration"
-                    }]
-                }, {
-                    type: "rating",
-                    name: "question14",
-                    title: "Quantitative",
-                    rateValues: [{
-                        value: 1,
-                        text: "Accounting"
-                    }, {
-                        value: 2,
-                        text: "Data Analysis"
-                    }, {
-                        value: 3,
-                        text: "Excel"
-                    }, {
-                        value: 4,
-                        text: "Forecasting"
-                    }, {
-                        value: 5,
-                        text: "Statistics"
-                    }]
-                }],
-                title: "In which of the following skills do you think you excel? Select the skills that apply to you."
-            }],
-            sendResultOnPageNext: true,
-            showPrevButton: false,
-            showProgressBar: "top",
-            requiredText: ""
-        }
-
-        function sendDataToServer(survey) {
-            //send Ajax request to your web server.
-            alert("The results are:" + JSON.stringify(survey.data));
-        }
-
-        var survey = new Survey.Model(surveyJSON);
-        $("#surveyContainer").Survey({
-            model: survey,
-            onComplete: sendDataToServer
-        });
+    var defaultThemeColors = Survey.StylesManager.ThemeColors["default"];
+    defaultThemeColors["$main-color"] = "#529CFF";
+    defaultThemeColors["$main-hover-color"] = "#529CFF";
+    defaultThemeColors["$text-color"] = "424242";
+    defaultThemeColors["$header-color"] = "#424242";
+    defaultThemeColors["$header-background-color"] = "#E1E1E1";
+    defaultThemeColors["$body-container-background-color"] = "#FAFAFA";
+    Survey.StylesManager.applyTheme();
+    var surveyJSON = {
+    		focusFirstQuestionAutomatic: false,
+    		pages: [{
+    			name: "Select region of interest",
+    			elements: [{
+    				type: "dropdown",
+    				name: "question1",
+    				title: "Where would you like to live and work?",
+    				defaultValue: "item1",
+    				choices: [{
+    					value: "item1",
+    					text: "choose"
+    				}, "item2", "item3"]
+    			}, {
+    				type: "multipletext",
+    				name: "question2",
+    				visible: false,
+    				visibleIf: "{question1} != 'item1'",
+    				title: "Enter up to 5 cities",
+    				isRequired: true,
+    				items: [{
+    					name: "city1",
+    					isRequired: true,
+    					title: "1."
+    				}, {
+    					name: "city2",
+    					title: "2."
+    				}, {
+    					name: "city3",
+    					title: "3."
+    				}, {
+    					name: "city4",
+    					title: "4."
+    				}, {
+    					name: "city4",
+    					title: "5."
+    				}]
+    			}],
+    			questionTitleLocation: "top",
+    			title: "Where would you like to live and work?",
+    			navigationButtonsVisibility: "show"
+    		}, {
+    			name: "Background questions",
+    			elements: [{
+    				type: "text",
+    				name: "question3",
+    				title: "What is your age?"
+    			}, {
+    				type: "rating",
+    				name: "question4",
+    				title: "What is the minimum salary you are looking for?"
+    			}, {
+    				type: "dropdown",
+    				name: "question5",
+    				title: "What is your level of education?",
+    				choices: ["item1", "item2", "item3"]
+    			}],
+    			title: "About you",
+    			questionsOrder: "initial"
+    		}, {
+    			name: "Rate these activities",
+    			elements: [{
+    				type: "rating",
+    				name: "question6",
+    				title: "Woodworking"
+    			}, {
+    				type: "rating",
+    				name: "question7",
+    				title: "Painting"
+    			}, {
+    				type: "rating",
+    				name: "question8",
+    				title: "Writing Poems"
+    			}],
+    			title: "How much do you enjoy the following activities?"
+    		}, {
+    			name: "Rate level of experience",
+    			elements: [{
+    				type: "rating",
+    				name: "question9",
+    				title: "Collaboration",
+    				rateValues: [{
+    					value: 1,
+    					text: "Yes"
+    				}, {
+    					value: 2,
+    					text: "No"
+    				}]
+    			}, {
+    				type: "rating",
+    				name: "question10",
+    				visibleIf: "{question9} = 1",
+    				title: "Confidence"
+    			}, {
+    				type: "rating",
+    				name: "question11",
+    				title: "Shipbuilding",
+    				rateValues: [{
+    					value: 1,
+    					text: "Yes"
+    				}, {
+    					value: 2,
+    					text: "No"
+    				}]
+    			}, {
+    				type: "rating",
+    				name: "question12",
+    				visibleIf: "{question11} = 1",
+    				title: "Confidence"
+    			}],
+    			title: "Do you have experience with the following activities?"
+    		}, {
+    			name: "Choose relevant skills",
+    			elements: [{
+    				type: "rating",
+    				name: "question13",
+    				title: "Communication",
+    				rateValues: [{
+    					value: 1,
+    					text: "Listening"
+    				}, {
+    					value: 2,
+    					text: "Respect"
+    				}, {
+    					value: 3,
+    					text: "Speaking"
+    				}, {
+    					value: 4,
+    					text: "Writing"
+    				}, {
+    					value: 5,
+    					text: "Collaboration"
+    				}]
+    			}, {
+    				type: "rating",
+    				name: "question14",
+    				title: "Quantitative",
+    				rateValues: [{
+    					value: 1,
+    					text: "Accounting"
+    				}, {
+    					value: 2,
+    					text: "Data Analysis"
+    				}, {
+    					value: 3,
+    					text: "Excel"
+    				}, {
+    					value: 4,
+    					text: "Forecasting"
+    				}, {
+    					value: 5,
+    					text: "Statistics"
+    				}]
+    			}],
+    			title: "In which of the following skills do you think you excel? Select the skills that apply to you."
+    		}],
+    		sendResultOnPageNext: true,
+    		showPrevButton: false,
+    		showProgressBar: "top",
+    		requiredText: ""
+    }
+    function sendDataToServer(survey) {
+        survey.sendResult('606700ab-8fc8-49ab-81f9-5e028bd22827');
+    }
+    var survey = new Survey.Model(surveyJSON);
+    $("#surveyContainer").Survey({
+        model: survey,
+        onComplete: sendDataToServer
+    });
     </script>
 </body>
-
 </html>
