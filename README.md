@@ -30,6 +30,18 @@ At this point, you can test whether it has been set up correctly -- you should s
 
 As an aside: I have found it to be easier to create/update/add to tables in .csv files than directly in SQL, which I then copy into the production database using the COPY INTO command.  The process (especially for creating N:M join tables) is somewhat complicated and finicky, involving lots of VLOOKUPs in Excel.
 
+#### macOS 💻
+
+The steps that follow are for macOS users:
+1. Install the production database dump file (e.g. `database_production_042218 .dump`)
+2. Install [Postgres.app]("https://postgresapp.com/")
+3. Open Postgres.app and click on a pre-generated database
+4. Do `\q` to exit that database and type `psql`
+5. Create the database (`CREATE DATABASE database_production;`)
+6. Finally, restore the database (`$ pg_restore -d database_production database_production_042218\ .dump`)
+7. Now open Postgres.app, select `database_production`, and run a command such as `select * from "Zones" limit 15;` to verify the Restore
+
+
 ### Running the app
 
 Use `npm start` to fire up the server.  The app will run on **localhost:3000**.
