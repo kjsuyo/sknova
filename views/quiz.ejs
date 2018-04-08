@@ -36,166 +36,450 @@
     defaultThemeColors["$body-container-background-color"] = "#FAFAFA";
     Survey.StylesManager.applyTheme();
     var surveyJSON = {
-    		focusFirstQuestionAutomatic: false,
-    		pages: [{
-    			name: "Select region of interest",
-    			elements: [{
-    				type: "dropdown",
-    				name: "question1",
-    				title: "Where would you like to live and work?",
-    				defaultValue: "item1",
-    				choices: [{
-    					value: "item1",
-    					text: "choose"
-    				}, "item2", "item3"]
-    			}, {
-    				type: "multipletext",
-    				name: "question2",
-    				visible: false,
-    				visibleIf: "{question1} != 'item1'",
-    				title: "Enter up to 5 cities",
-    				isRequired: true,
-    				items: [{
-    					name: "city1",
-    					isRequired: true,
-    					title: "1."
-    				}, {
-    					name: "city2",
-    					title: "2."
-    				}, {
-    					name: "city3",
-    					title: "3."
-    				}, {
-    					name: "city4",
-    					title: "4."
-    				}, {
-    					name: "city4",
-    					title: "5."
-    				}]
-    			}],
-    			questionTitleLocation: "top",
-    			title: "Where would you like to live and work?",
-    			navigationButtonsVisibility: "show"
-    		}, {
-    			name: "Background questions",
-    			elements: [{
-    				type: "text",
-    				name: "question3",
-    				title: "What is your age?"
-    			}, {
-    				type: "rating",
-    				name: "question4",
-    				title: "What is the minimum salary you are looking for?"
-    			}, {
-    				type: "dropdown",
-    				name: "question5",
-    				title: "What is your level of education?",
-    				choices: ["item1", "item2", "item3"]
-    			}],
-    			title: "About you",
-    			questionsOrder: "initial"
-    		}, {
-    			name: "Rate these activities",
-    			elements: [{
-    				type: "rating",
-    				name: "question6",
-    				title: "Woodworking"
-    			}, {
-    				type: "rating",
-    				name: "question7",
-    				title: "Painting"
-    			}, {
-    				type: "rating",
-    				name: "question8",
-    				title: "Writing Poems"
-    			}],
-    			title: "How much do you enjoy the following activities?"
-    		}, {
-    			name: "Rate level of experience",
-    			elements: [{
-    				type: "rating",
-    				name: "question9",
-    				title: "Collaboration",
-    				rateValues: [{
-    					value: 1,
-    					text: "Yes"
-    				}, {
-    					value: 2,
-    					text: "No"
-    				}]
-    			}, {
-    				type: "rating",
-    				name: "question10",
-    				visibleIf: "{question9} = 1",
-    				title: "Confidence"
-    			}, {
-    				type: "rating",
-    				name: "question11",
-    				title: "Shipbuilding",
-    				rateValues: [{
-    					value: 1,
-    					text: "Yes"
-    				}, {
-    					value: 2,
-    					text: "No"
-    				}]
-    			}, {
-    				type: "rating",
-    				name: "question12",
-    				visibleIf: "{question11} = 1",
-    				title: "Confidence"
-    			}],
-    			title: "Do you have experience with the following activities?"
-    		}, {
-    			name: "Choose relevant skills",
-    			elements: [{
-    				type: "rating",
-    				name: "question13",
-    				title: "Communication",
-    				rateValues: [{
-    					value: 1,
-    					text: "Listening"
-    				}, {
-    					value: 2,
-    					text: "Respect"
-    				}, {
-    					value: 3,
-    					text: "Speaking"
-    				}, {
-    					value: 4,
-    					text: "Writing"
-    				}, {
-    					value: 5,
-    					text: "Collaboration"
-    				}]
-    			}, {
-    				type: "rating",
-    				name: "question14",
-    				title: "Quantitative",
-    				rateValues: [{
-    					value: 1,
-    					text: "Accounting"
-    				}, {
-    					value: 2,
-    					text: "Data Analysis"
-    				}, {
-    					value: 3,
-    					text: "Excel"
-    				}, {
-    					value: 4,
-    					text: "Forecasting"
-    				}, {
-    					value: 5,
-    					text: "Statistics"
-    				}]
-    			}],
-    			title: "In which of the following skills do you think you excel? Select the skills that apply to you."
-    		}],
-    		sendResultOnPageNext: true,
-    		showPrevButton: false,
-    		showProgressBar: "top",
-    		requiredText: ""
+        focusFirstQuestionAutomatic: false,
+        pages: [{
+                name: "Select region of interest",
+                elements: [{
+                        type: "dropdown",
+                        name: "question1",
+                        title: "Where would you like to live and work?",
+                        defaultValue: "item1",
+                        choices: [
+                            "Alabama",
+                            "Alaska",
+                            "Arizona",
+                            "Colorado",
+                            {
+                                value: "California",
+                                text: "California "
+                            },
+                            "Colorado",
+                            {
+                                value: "Connecticut",
+                                text: "Connecticut "
+                            },
+                            {
+                                value: "Delaware",
+                                text: "Delaware "
+                            },
+                            {
+                                value: "Florida",
+                                text: "Florida "
+                            },
+                            {
+                                value: "Georgia",
+                                text: "Georgia "
+                            },
+                            {
+                                value: "Hawaii",
+                                text: "Hawaii "
+                            },
+                            {
+                                value: "Idaho",
+                                text: "Idaho "
+                            },
+                            {
+                                value: "Illinois",
+                                text: "Illinois  "
+                            },
+                            {
+                                value: "Indiana",
+                                text: "Indiana "
+                            },
+                            {
+                                value: "Iowa",
+                                text: "Iowa "
+                            },
+                            {
+                                value: "Kansas",
+                                text: "Kansas "
+                            },
+                            {
+                                value: "Kentucky",
+                                text: "Kentucky "
+                            },
+                            {
+                                value: "Louisiana",
+                                text: "Louisiana "
+                            },
+                            "Maine",
+                            {
+                                value: "Maryland",
+                                text: "Maryland "
+                            },
+                            {
+                                value: "Massachusetts",
+                                text: "Massachusetts "
+                            },
+                            {
+                                value: "Michigan",
+                                text: "Michigan "
+                            },
+                            {
+                                value: "Minnesota",
+                                text: "Minnesota "
+                            },
+                            {
+                                value: "Mississippi",
+                                text: "Mississippi "
+                            },
+                            {
+                                value: "Missouri",
+                                text: "Missouri "
+                            },
+                            {
+                                value: "Montana",
+                                text: "Montana  "
+                            },
+                            {
+                                value: "Nebraska",
+                                text: "Nebraska "
+                            },
+                            {
+                                value: "Nevada",
+                                text: "Nevada "
+                            },
+                            {
+                                value: "New Hampshire",
+                                text: "New Hampshire "
+                            },
+                            {
+                                value: "New Jersey",
+                                text: "New Jersey "
+                            },
+                            {
+                                value: "New Mexico",
+                                text: "New Mexico "
+                            },
+                            {
+                                value: "New York",
+                                text: "New York "
+                            },
+                            {
+                                value: "North Carolina",
+                                text: "North Carolina "
+                            },
+                            {
+                                value: "North Dakota",
+                                text: "North Dakota "
+                            },
+                            {
+                                value: "Ohio",
+                                text: "Ohio "
+                            },
+                            {
+                                value: "Oklahoma",
+                                text: "Oklahoma "
+                            },
+                            {
+                                value: "Oregon",
+                                text: "Oregon "
+                            },
+                            {
+                                value: "Pennsylvania",
+                                text: "Pennsylvania "
+                            },
+                            "Rhode Island",
+                            {
+                                value: "South Carolina",
+                                text: "South Carolina "
+                            },
+                            {
+                                value: "South Dakota",
+                                text: "South Dakota "
+                            },
+                            {
+                                value: "Tennessee",
+                                text: "Tennessee "
+                            },
+                            "Texas",
+                            {
+                                value: "Utah",
+                                text: "Utah "
+                            },
+                            {
+                                value: "Vermont",
+                                text: "Vermont "
+                            },
+                            {
+                                value: "Virginia",
+                                text: "Virginia "
+                            },
+                            {
+                                value: "Washington",
+                                text: "Washington "
+                            },
+                            {
+                                value: "West Virginia",
+                                text: "West Virginia "
+                            },
+                            {
+                                value: "Wisconsin",
+                                text: "Wisconsin "
+                            },
+                            "Wyoming",
+                            "American Samoa",
+                            "Guam",
+                            "Northern Mariana Islands",
+                            "Puerto Rico",
+                            "U.S. Virgin Islands"
+                        ]
+                    },
+                    {
+                        type: "multipletext",
+                        name: "question2",
+                        visible: false,
+                        visibleIf: "{question1} != 'item1'",
+                        title: "Enter up to 5 cities",
+                        isRequired: true,
+                        items: [{
+                                name: "city1",
+                                isRequired: true,
+                                title: "1."
+                            },
+                            {
+                                name: "city2",
+                                title: "2."
+                            },
+                            {
+                                name: "city3",
+                                title: "3."
+                            },
+                            {
+                                name: "city4",
+                                title: "4."
+                            },
+                            {
+                                name: "city4",
+                                title: "5."
+                            }
+                        ]
+                    }
+                ],
+                questionTitleLocation: "top",
+                title: "Where would you like to live and work?",
+                navigationButtonsVisibility: "show"
+            },
+            {
+                name: "Background questions",
+                elements: [{
+                        type: "text",
+                        name: "question3",
+                        title: "What is your age?"
+                    },
+                    {
+                        type: "rating",
+                        name: "question4",
+                        title: "What is the minimum salary you are looking for?",
+                        rateValues: [{
+                                value: "1",
+                                text: "$10,000 to $29,999"
+                            },
+                            {
+                                value: "2",
+                                text: "$30,000 to $49,999"
+                            },
+                            {
+                                value: "3",
+                                text: "$50,000 to $79,999"
+                            },
+                            {
+                                value: "4",
+                                text: "$80,000 to $99,999"
+                            },
+                            {
+                                value: "5",
+                                text: "$100,000 or more"
+                            }
+                        ]
+                    },
+                    {
+                        type: "dropdown",
+                        name: "question5",
+                        title: "What is your level of education?",
+                        choices: [{
+                                value: "item1",
+                                text: "No schooling completed"
+                            },
+                            {
+                                value: "item2",
+                                text: "Nursery school to 8th grade"
+                            },
+                            {
+                                value: "item3",
+                                text: "9th, 10th or 11th grade"
+                            },
+                            {
+                                value: "item4",
+                                text: "12th grade, no diploma"
+                            },
+                            {
+                                value: "item5",
+                                text: "High school graduate - high school diploma or the equivalent (for example: GED)"
+                            },
+                            {
+                                value: "item6",
+                                text: "Some college credit, but less than 1 year"
+                            },
+                            {
+                                value: "item7",
+                                text: "1 or more years of college, no degree"
+                            },
+                            {
+                                value: "item8",
+                                text: "Associate degree (for example: AA, AS)"
+                            },
+                            {
+                                value: "item9",
+                                text: "Bachelor's degree (for example: BA, AB, BS)"
+                            },
+                            {
+                                value: "item10",
+                                text: "Master's degree (for example: MA, MS, MEng, MEd, MSW, MBA)"
+                            },
+                            {
+                                value: "item11",
+                                text: "Professional degree (for example: MD, DDS, DVM, LLB, JD)"
+                            },
+                            {
+                                value: "item12",
+                                text: "Doctorate degree (for example: PhD, EdD)"
+                            }
+                        ]
+                    }
+                ],
+                title: "About you",
+                questionsOrder: "initial"
+            },
+            {
+                name: "Rate these activities",
+                elements: [{
+                        type: "rating",
+                        name: "question6",
+                        title: "Woodworking"
+                    },
+                    {
+                        type: "rating",
+                        name: "question7",
+                        title: "Painting"
+                    },
+                    {
+                        type: "rating",
+                        name: "question8",
+                        title: "Writing Poems"
+                    }
+                ],
+                title: "How much do you enjoy the following activities?"
+            },
+            {
+                name: "Rate level of experience",
+                elements: [{
+                        type: "rating",
+                        name: "question9",
+                        title: "Collaboration",
+                        rateValues: [{
+                                value: 1,
+                                text: "Yes"
+                            },
+                            {
+                                value: 2,
+                                text: "No"
+                            }
+                        ]
+                    },
+                    {
+                        type: "rating",
+                        name: "question10",
+                        visibleIf: "{question9} = 1",
+                        title: "Confidence"
+                    },
+                    {
+                        type: "rating",
+                        name: "question11",
+                        title: "Shipbuilding",
+                        rateValues: [{
+                                value: 1,
+                                text: "Yes"
+                            },
+                            {
+                                value: 2,
+                                text: "No"
+                            }
+                        ]
+                    },
+                    {
+                        type: "rating",
+                        name: "question12",
+                        visibleIf: "{question11} = 1",
+                        title: "Confidence"
+                    }
+                ],
+                title: "Do you have experience with the following activities?"
+            },
+            {
+                name: "Choose relevant skills",
+                elements: [{
+                        type: "rating",
+                        name: "question13",
+                        title: "Communication",
+                        rateValues: [{
+                                value: 1,
+                                text: "Listening"
+                            },
+                            {
+                                value: 2,
+                                text: "Respect"
+                            },
+                            {
+                                value: 3,
+                                text: "Speaking"
+                            },
+                            {
+                                value: 4,
+                                text: "Writing"
+                            },
+                            {
+                                value: 5,
+                                text: "Collaboration"
+                            }
+                        ]
+                    },
+                    {
+                        type: "rating",
+                        name: "question14",
+                        title: "Quantitative",
+                        rateValues: [{
+                                value: 1,
+                                text: "Accounting"
+                            },
+                            {
+                                value: 2,
+                                text: "Data Analysis"
+                            },
+                            {
+                                value: 3,
+                                text: "Excel"
+                            },
+                            {
+                                value: 4,
+                                text: "Forecasting"
+                            },
+                            {
+                                value: 5,
+                                text: "Statistics"
+                            }
+                        ]
+                    }
+                ],
+                title: "In which of the following skills do you think you excel? Select the skills that apply to you."
+            }
+        ],
+        sendResultOnPageNext: true,
+        showPrevButton: false,
+        showProgressBar: "top",
+        requiredText: ""
     }
+
     function sendDataToServer(survey) {
         survey.sendResult('606700ab-8fc8-49ab-81f9-5e028bd22827');
     }
